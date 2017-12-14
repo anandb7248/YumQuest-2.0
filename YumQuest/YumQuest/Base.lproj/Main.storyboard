@@ -12,6 +12,7 @@
     <customFonts key="customFonts">
         <array key="Avenir.ttc">
             <string>Avenir-Black</string>
+            <string>Avenir-Book</string>
         </array>
     </customFonts>
     <scenes>
@@ -64,12 +65,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZH-Av-40L">
+                                <rect key="frame" x="111" y="626" width="128" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwd-ad-ECu">
+                                <rect key="frame" x="248" y="621" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Sign Up"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcJ-PW-26S">
-                                <rect key="frame" x="111" y="478" width="183" height="40"/>
+                                <rect key="frame" x="79" y="477" width="215" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.52769760450939085" blue="0.30977469546952219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="1gP-dW-vby"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="183" id="Adn-46-AHB"/>
+                                    <constraint firstAttribute="width" constant="215" id="bdr-ze-V0k"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Log In">
@@ -82,22 +93,27 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92086373730964466" green="0.62228382293079232" blue="0.26721608184655482" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="lEr-b7-8Lo" firstAttribute="trailing" secondItem="fcJ-PW-26S" secondAttribute="trailing" constant="81" id="1jn-Xr-vDE"/>
+                            <constraint firstItem="fcJ-PW-26S" firstAttribute="top" secondItem="ZKk-dk-S4N" secondAttribute="bottom" constant="71" id="10z-YE-rMH"/>
                             <constraint firstItem="YXX-cd-jLj" firstAttribute="top" secondItem="Lb4-JX-pB3" secondAttribute="bottom" constant="8" id="2E4-d0-q9u"/>
+                            <constraint firstItem="lEr-b7-8Lo" firstAttribute="bottom" secondItem="bwd-ad-ECu" secondAttribute="bottom" constant="16" id="4V2-jz-vSC"/>
                             <constraint firstItem="ZKk-dk-S4N" firstAttribute="top" secondItem="6Nv-zK-9uz" secondAttribute="bottom" constant="72" id="5SN-5o-ArU"/>
                             <constraint firstItem="j83-6T-SGl" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="16" id="6dM-hZ-J1R"/>
                             <constraint firstItem="kCU-Hi-nmX" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="16" id="6zL-WV-csv"/>
+                            <constraint firstItem="lEr-b7-8Lo" firstAttribute="trailing" secondItem="bwd-ad-ECu" secondAttribute="trailing" constant="81" id="7a0-4V-H7E"/>
                             <constraint firstItem="kCU-Hi-nmX" firstAttribute="top" secondItem="j83-6T-SGl" secondAttribute="bottom" constant="27" id="EBN-MB-f2F"/>
+                            <constraint firstItem="lEr-b7-8Lo" firstAttribute="trailing" secondItem="fcJ-PW-26S" secondAttribute="trailing" constant="81" id="FQv-K6-r6p"/>
                             <constraint firstItem="lEr-b7-8Lo" firstAttribute="trailing" secondItem="YXX-cd-jLj" secondAttribute="trailing" constant="81" id="Hqx-V4-fKG"/>
                             <constraint firstItem="Lb4-JX-pB3" firstAttribute="top" secondItem="lEr-b7-8Lo" secondAttribute="top" constant="12" id="NB1-AV-LpD"/>
-                            <constraint firstItem="fcJ-PW-26S" firstAttribute="top" secondItem="ZKk-dk-S4N" secondAttribute="bottom" constant="72" id="SxV-EB-pJN"/>
                             <constraint firstItem="6Nv-zK-9uz" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="111" id="VXt-rL-52X"/>
+                            <constraint firstItem="lEr-b7-8Lo" firstAttribute="bottom" secondItem="TZH-Av-40L" secondAttribute="bottom" constant="20" id="W09-V7-soR"/>
+                            <constraint firstItem="TZH-Av-40L" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="111" id="fCE-R7-rxn"/>
                             <constraint firstItem="Lb4-JX-pB3" firstAttribute="centerX" secondItem="lEr-b7-8Lo" secondAttribute="centerX" id="gwI-hC-9r3"/>
+                            <constraint firstItem="bwd-ad-ECu" firstAttribute="leading" secondItem="TZH-Av-40L" secondAttribute="trailing" constant="9" id="jSo-K5-QKQ"/>
                             <constraint firstItem="j83-6T-SGl" firstAttribute="top" secondItem="lEr-b7-8Lo" secondAttribute="top" constant="232" id="kaM-RN-hsh"/>
-                            <constraint firstItem="fcJ-PW-26S" firstAttribute="leading" secondItem="ZKk-dk-S4N" secondAttribute="leading" id="laL-AL-LcB"/>
                             <constraint firstItem="ZKk-dk-S4N" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="111" id="llr-at-BvM"/>
                             <constraint firstItem="YXX-cd-jLj" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="79" id="o5t-rF-rkr"/>
                             <constraint firstItem="6Nv-zK-9uz" firstAttribute="top" secondItem="YXX-cd-jLj" secondAttribute="bottom" constant="46" id="tCU-5x-ivK"/>
+                            <constraint firstItem="fcJ-PW-26S" firstAttribute="leading" secondItem="lEr-b7-8Lo" secondAttribute="leading" constant="79" id="xjq-Y4-Ut2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lEr-b7-8Lo"/>
                     </view>

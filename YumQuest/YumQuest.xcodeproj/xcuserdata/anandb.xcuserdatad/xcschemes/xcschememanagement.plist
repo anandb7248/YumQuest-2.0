@@ -7,7 +7,25 @@
 		<key>YumQuest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>15A071331FE2097E003DE1E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>15A0714A1FE2097E003DE1E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>15A071551FE2097E003DE1E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

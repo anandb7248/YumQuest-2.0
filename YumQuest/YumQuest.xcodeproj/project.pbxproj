@@ -12,13 +12,16 @@
 		157179DE1FE2155700C5A167 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DC1FE2155600C5A167 /* account.png */; };
 		157179DF1FE2155700C5A167 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DD1FE2155600C5A167 /* password.png */; };
 		15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071371FE2097E003DE1E0 /* AppDelegate.swift */; };
-		15A0713A1FE2097E003DE1E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071391FE2097E003DE1E0 /* ViewController.swift */; };
+		15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071391FE2097E003DE1E0 /* LogInVC.swift */; };
 		15A0713D1FE2097E003DE1E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A0713B1FE2097E003DE1E0 /* Main.storyboard */; };
 		15A071401FE2097E003DE1E0 /* YumQuest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15A0713E1FE2097E003DE1E0 /* YumQuest.xcdatamodeld */; };
 		15A071421FE2097E003DE1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A071411FE2097E003DE1E0 /* Assets.xcassets */; };
 		15A071451FE2097E003DE1E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A071431FE2097E003DE1E0 /* LaunchScreen.storyboard */; };
 		15A071501FE2097E003DE1E0 /* YumQuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0714F1FE2097E003DE1E0 /* YumQuestTests.swift */; };
 		15A0715B1FE2097E003DE1E0 /* YumQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0715A1FE2097E003DE1E0 /* YumQuestUITests.swift */; };
+		216BD6B3E8FC8791CD377AF5 /* Pods_YumQuestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DF8FD631DD8DAE96C2E26D /* Pods_YumQuestUITests.framework */; };
+		AEE667D9DE05B8D7A4F9EA8B /* Pods_YumQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44FCAA2FCD4FC2E0166BA09 /* Pods_YumQuest.framework */; };
+		ED7B0160E16DEA265AF2F76F /* Pods_YumQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2167FECF20742585693E181E /* Pods_YumQuestTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +46,10 @@
 		157179DA1FE2135C00C5A167 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		157179DC1FE2155600C5A167 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		157179DD1FE2155600C5A167 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
+		157B6E6A1FE2461F00C9799F /* YumQuest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YumQuest.entitlements; sourceTree = "<group>"; };
 		15A071341FE2097E003DE1E0 /* YumQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A071371FE2097E003DE1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15A071391FE2097E003DE1E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		15A071391FE2097E003DE1E0 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		15A0713C1FE2097E003DE1E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15A0713F1FE2097E003DE1E0 /* YumQuest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YumQuest.xcdatamodel; sourceTree = "<group>"; };
 		15A071411FE2097E003DE1E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 		15A071561FE2097E003DE1E0 /* YumQuestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A0715A1FE2097E003DE1E0 /* YumQuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumQuestUITests.swift; sourceTree = "<group>"; };
 		15A0715C1FE2097E003DE1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F7DF7558768FE73646E3965 /* Pods-YumQuestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestTests/Pods-YumQuestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1FE6DA10C2EE6D460AAFC174 /* Pods-YumQuestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestTests/Pods-YumQuestTests.release.xcconfig"; sourceTree = "<group>"; };
+		2167FECF20742585693E181E /* Pods_YumQuestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YumQuestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A3254FD9238E358DC1B7DBB /* Pods-YumQuest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuest/Pods-YumQuest.debug.xcconfig"; sourceTree = "<group>"; };
+		4509BFF0F189B124CEC4929F /* Pods-YumQuest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuest.release.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuest/Pods-YumQuest.release.xcconfig"; sourceTree = "<group>"; };
+		75DF8FD631DD8DAE96C2E26D /* Pods_YumQuestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YumQuestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97BEEC47335D1A7BCF2D14E /* Pods-YumQuestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestUITests/Pods-YumQuestUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D44FCAA2FCD4FC2E0166BA09 /* Pods_YumQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YumQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC766E87CE07A87A436AC0B1 /* Pods-YumQuestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestUITests/Pods-YumQuestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE667D9DE05B8D7A4F9EA8B /* Pods_YumQuest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7B0160E16DEA265AF2F76F /* Pods_YumQuestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				216BD6B3E8FC8791CD377AF5 /* Pods_YumQuestUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +117,8 @@
 				15A0714E1FE2097E003DE1E0 /* YumQuestTests */,
 				15A071591FE2097E003DE1E0 /* YumQuestUITests */,
 				15A071351FE2097E003DE1E0 /* Products */,
+				5990E0B19EA164A03A5EADBA /* Pods */,
+				D2C38ADB7AFAC809A9495478 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,9 +135,10 @@
 		15A071361FE2097E003DE1E0 /* YumQuest */ = {
 			isa = PBXGroup;
 			children = (
+				157B6E6A1FE2461F00C9799F /* YumQuest.entitlements */,
 				157179D71FE211E800C5A167 /* Pictures */,
 				15A071371FE2097E003DE1E0 /* AppDelegate.swift */,
-				15A071391FE2097E003DE1E0 /* ViewController.swift */,
+				15A071391FE2097E003DE1E0 /* LogInVC.swift */,
 				15A0713B1FE2097E003DE1E0 /* Main.storyboard */,
 				157179D51FE20E8200C5A167 /* resource */,
 				15A071411FE2097E003DE1E0 /* Assets.xcassets */,
@@ -148,6 +167,29 @@
 			path = YumQuestUITests;
 			sourceTree = "<group>";
 		};
+		5990E0B19EA164A03A5EADBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A3254FD9238E358DC1B7DBB /* Pods-YumQuest.debug.xcconfig */,
+				4509BFF0F189B124CEC4929F /* Pods-YumQuest.release.xcconfig */,
+				1F7DF7558768FE73646E3965 /* Pods-YumQuestTests.debug.xcconfig */,
+				1FE6DA10C2EE6D460AAFC174 /* Pods-YumQuestTests.release.xcconfig */,
+				DC766E87CE07A87A436AC0B1 /* Pods-YumQuestUITests.debug.xcconfig */,
+				C97BEEC47335D1A7BCF2D14E /* Pods-YumQuestUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D2C38ADB7AFAC809A9495478 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D44FCAA2FCD4FC2E0166BA09 /* Pods_YumQuest.framework */,
+				2167FECF20742585693E181E /* Pods_YumQuestTests.framework */,
+				75DF8FD631DD8DAE96C2E26D /* Pods_YumQuestUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15A0715F1FE2097E003DE1E0 /* Build configuration list for PBXNativeTarget "YumQuest" */;
 			buildPhases = (
+				527A5F90B1F52800D27D2C1A /* [CP] Check Pods Manifest.lock */,
 				15A071301FE2097E003DE1E0 /* Sources */,
 				15A071311FE2097E003DE1E0 /* Frameworks */,
 				15A071321FE2097E003DE1E0 /* Resources */,
+				B098632CE6237A1735169CCA /* [CP] Embed Pods Frameworks */,
+				89BCCE86FB91CD423F814973 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -172,9 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15A071621FE2097E003DE1E0 /* Build configuration list for PBXNativeTarget "YumQuestTests" */;
 			buildPhases = (
+				5712E953549C80216FC6B41D /* [CP] Check Pods Manifest.lock */,
 				15A071471FE2097E003DE1E0 /* Sources */,
 				15A071481FE2097E003DE1E0 /* Frameworks */,
 				15A071491FE2097E003DE1E0 /* Resources */,
+				015451F7005FC79E84996B39 /* [CP] Embed Pods Frameworks */,
+				147B748AAC13C06A6DBDA846 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,9 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15A071651FE2097E003DE1E0 /* Build configuration list for PBXNativeTarget "YumQuestUITests" */;
 			buildPhases = (
+				91BD3D4072CD3B74DBEE4195 /* [CP] Check Pods Manifest.lock */,
 				15A071521FE2097E003DE1E0 /* Sources */,
 				15A071531FE2097E003DE1E0 /* Frameworks */,
 				15A071541FE2097E003DE1E0 /* Resources */,
+				93FEE3255FC4F2D86C2879DC /* [CP] Embed Pods Frameworks */,
+				71CA11CAC6A8590BECE18A97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +268,11 @@
 					15A071331FE2097E003DE1E0 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					15A0714A1FE2097E003DE1E0 = {
 						CreatedOnToolsVersion = 9.2;
@@ -281,13 +337,175 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		015451F7005FC79E84996B39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YumQuestTests/Pods-YumQuestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		147B748AAC13C06A6DBDA846 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YumQuestTests/Pods-YumQuestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		527A5F90B1F52800D27D2C1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YumQuest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5712E953549C80216FC6B41D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YumQuestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71CA11CAC6A8590BECE18A97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YumQuestUITests/Pods-YumQuestUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89BCCE86FB91CD423F814973 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YumQuest/Pods-YumQuest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91BD3D4072CD3B74DBEE4195 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YumQuestUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93FEE3255FC4F2D86C2879DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YumQuestUITests/Pods-YumQuestUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B098632CE6237A1735169CCA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YumQuest/Pods-YumQuest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YumQuest/Pods-YumQuest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		15A071301FE2097E003DE1E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				15A071401FE2097E003DE1E0 /* YumQuest.xcdatamodeld in Sources */,
-				15A0713A1FE2097E003DE1E0 /* ViewController.swift in Sources */,
+				15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */,
 				15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,8 +670,10 @@
 		};
 		15A071601FE2097E003DE1E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A3254FD9238E358DC1B7DBB /* Pods-YumQuest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YumQuest/YumQuest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85RCG4JCT7;
 				INFOPLIST_FILE = YumQuest/Info.plist;
@@ -468,8 +688,10 @@
 		};
 		15A071611FE2097E003DE1E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4509BFF0F189B124CEC4929F /* Pods-YumQuest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YumQuest/YumQuest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85RCG4JCT7;
 				INFOPLIST_FILE = YumQuest/Info.plist;
@@ -484,6 +706,7 @@
 		};
 		15A071631FE2097E003DE1E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F7DF7558768FE73646E3965 /* Pods-YumQuestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -501,6 +724,7 @@
 		};
 		15A071641FE2097E003DE1E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FE6DA10C2EE6D460AAFC174 /* Pods-YumQuestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -518,6 +742,7 @@
 		};
 		15A071661FE2097E003DE1E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC766E87CE07A87A436AC0B1 /* Pods-YumQuestUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -534,6 +759,7 @@
 		};
 		15A071671FE2097E003DE1E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C97BEEC47335D1A7BCF2D14E /* Pods-YumQuestUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
