@@ -10,10 +10,11 @@ import UIKit
 import FacebookCore
 import FacebookLogin
 import FBSDKLoginKit
+import FirebaseAuth
+import Firebase
 
 class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
     
-    var dict : [String : AnyObject]!
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
@@ -27,6 +28,7 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
         view.addSubview(fbLoginButton)
         
         fbLoginButton.delegate = self
+        fbLoginButton.readPermissions = ["email", "public_profile"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +45,25 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
             return
         }
         else{
-            print("Logged in")
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields":"id, name, email"]).start {
+                (connection, result, err) in
+                
+                if err != nil{
+                    print("Failed to start graph request:",err!)
+                }
+                
+                print(result!)
+                let accessToken = FBSDKAccessToken.current()
+                guard let accessTokenString = accessToken?.tokenString else { return }
+                let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+                Auth.auth().signIn(with: credentials, completion: { (user,error) in
+                    if error != nil {
+                        print("Something went wrong",error!)
+                    }
+                    
+                    print("Successfully logged in")
+                })
+            }
         }
     }
     
