@@ -53,6 +53,7 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
                 }
                 
                 print(result!)
+                //
                 let accessToken = FBSDKAccessToken.current()
                 guard let accessTokenString = accessToken?.tokenString else { return }
                 let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
@@ -60,7 +61,7 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
                     if error != nil {
                         print("Something went wrong",error!)
                     }
-                    
+                    //
                     print("Successfully logged in")
                 })
             }

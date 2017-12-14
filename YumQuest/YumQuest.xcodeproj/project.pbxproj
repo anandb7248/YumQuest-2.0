@@ -11,6 +11,7 @@
 		157179DB1FE2135C00C5A167 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DA1FE2135C00C5A167 /* logo.png */; };
 		157179DE1FE2155700C5A167 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DC1FE2155600C5A167 /* account.png */; };
 		157179DF1FE2155700C5A167 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DD1FE2155600C5A167 /* password.png */; };
+		157EA0901FE2E2CE00771E22 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EA08F1FE2E2CE00771E22 /* SignUpVC.swift */; };
 		15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071371FE2097E003DE1E0 /* AppDelegate.swift */; };
 		15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071391FE2097E003DE1E0 /* LogInVC.swift */; };
 		15A0713D1FE2097E003DE1E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A0713B1FE2097E003DE1E0 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		157179DC1FE2155600C5A167 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		157179DD1FE2155600C5A167 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		157B6E6A1FE2461F00C9799F /* YumQuest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YumQuest.entitlements; sourceTree = "<group>"; };
+		157EA08F1FE2E2CE00771E22 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		15A071341FE2097E003DE1E0 /* YumQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A071371FE2097E003DE1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A071391FE2097E003DE1E0 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				157179D71FE211E800C5A167 /* Pictures */,
 				15A071371FE2097E003DE1E0 /* AppDelegate.swift */,
 				15A071391FE2097E003DE1E0 /* LogInVC.swift */,
+				157EA08F1FE2E2CE00771E22 /* SignUpVC.swift */,
 				15A0713B1FE2097E003DE1E0 /* Main.storyboard */,
 				157179D51FE20E8200C5A167 /* resource */,
 				15A071411FE2097E003DE1E0 /* Assets.xcassets */,
@@ -516,6 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157EA0901FE2E2CE00771E22 /* SignUpVC.swift in Sources */,
 				15A071401FE2097E003DE1E0 /* YumQuest.xcdatamodeld in Sources */,
 				15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */,
 				15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */,
