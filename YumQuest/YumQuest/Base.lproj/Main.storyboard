@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WQD-US-caM">
             <objects>
-                <navigationController id="2y7-oe-3kq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" id="2y7-oe-3kq" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E0c-P9-fat">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -35,13 +36,13 @@
         <!--Log InVC-->
         <scene sceneID="3NF-9E-NRN">
             <objects>
-                <viewController id="hG6-At-AfG" customClass="LogInVC" customModule="YumQuest" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="hG6-At-AfG" customClass="LogInVC" customModule="YumQuest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OvH-Mj-eGG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lb4-JX-pB3">
-                                <rect key="frame" x="123" y="76" width="128" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lb4-JX-pB3">
+                                <rect key="frame" x="123" y="76" width="64" height="64"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YumQuest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXX-cd-jLj">
                                 <rect key="frame" x="80" y="212" width="215" height="60"/>
@@ -147,11 +148,105 @@
                     <connections>
                         <outlet property="passwordTF" destination="ZKk-dk-S4N" id="HIv-8I-Yhe"/>
                         <outlet property="usernameTF" destination="6Nv-zK-9uz" id="q1q-kE-Afl"/>
+                        <segue destination="1gN-VN-jO6" kind="show" identifier="segueToProfile" id="4pl-O0-KFO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1J-KH-3Zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="162"/>
+            <point key="canvasLocation" x="129" y="162"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="9TE-gr-9JH">
+            <objects>
+                <tabBarController id="1gN-VN-jO6" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Ct-i5-gxB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="lRf-h6-IWd" kind="relationship" relationship="viewControllers" id="PMr-cb-W7p"/>
+                        <segue destination="hfW-h0-ONJ" kind="relationship" relationship="viewControllers" id="Zo7-F6-ZDU"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5m5-82-nn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="129" y="-528"/>
+        </scene>
+        <!--Locations-->
+        <scene sceneID="dwb-db-AgZ">
+            <objects>
+                <viewController id="hfW-h0-ONJ" customClass="Restaurants" customModule="YumQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TvT-3E-2gI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.92086373730000004" green="0.62228382289999995" blue="0.2672160818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="PWI-I4-M88"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Locations" image="logoTabItem" id="hMA-JR-2jj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uk9-0c-SPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="857" y="-505"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="8w7-FE-9LF">
+            <objects>
+                <viewController storyboardIdentifier="Profile" id="lRf-h6-IWd" customClass="ProfileVC" customModule="YumQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nUb-HV-CJH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="EAo-pq-llV">
+                                <rect key="frame" x="155" y="76" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="A1I-dg-F3I"/>
+                                    <constraint firstAttribute="height" constant="64" id="mwT-jv-ITT"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u9o-7c-RIL">
+                                <rect key="frame" x="123" y="148" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Nu6-13-DaA"/>
+                                    <constraint firstAttribute="width" constant="128" id="Xy1-xY-75T"/>
+                                    <constraint firstAttribute="width" secondItem="u9o-7c-RIL" secondAttribute="height" multiplier="1:1" id="zIU-Bx-VXN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMp-ZS-RSE">
+                                <rect key="frame" x="16" y="284" width="343" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92086373730000004" green="0.62228382289999995" blue="0.2672160818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Ys2-JH-Bow" firstAttribute="trailing" secondItem="FMp-ZS-RSE" secondAttribute="trailing" constant="16" id="1ha-zD-En5"/>
+                            <constraint firstItem="FMp-ZS-RSE" firstAttribute="top" secondItem="u9o-7c-RIL" secondAttribute="bottom" constant="8" id="Rt9-8m-rCa"/>
+                            <constraint firstItem="EAo-pq-llV" firstAttribute="centerX" secondItem="Ys2-JH-Bow" secondAttribute="centerX" id="YQV-g1-tY2"/>
+                            <constraint firstItem="u9o-7c-RIL" firstAttribute="leading" secondItem="Ys2-JH-Bow" secondAttribute="leading" constant="123" id="cXY-3d-LcW"/>
+                            <constraint firstItem="EAo-pq-llV" firstAttribute="top" secondItem="Ys2-JH-Bow" secondAttribute="top" constant="12" id="fTI-81-Ye9"/>
+                            <constraint firstItem="Ys2-JH-Bow" firstAttribute="trailing" secondItem="u9o-7c-RIL" secondAttribute="trailing" constant="124" id="iy3-p8-8sh"/>
+                            <constraint firstItem="u9o-7c-RIL" firstAttribute="top" secondItem="EAo-pq-llV" secondAttribute="bottom" constant="8" id="nU7-Hh-mSZ"/>
+                            <constraint firstItem="u9o-7c-RIL" firstAttribute="centerX" secondItem="Ys2-JH-Bow" secondAttribute="centerX" id="ssj-7K-EwD"/>
+                            <constraint firstItem="EAo-pq-llV" firstAttribute="top" secondItem="Ys2-JH-Bow" secondAttribute="top" constant="12" id="xuZ-ee-Lsg"/>
+                            <constraint firstItem="FMp-ZS-RSE" firstAttribute="leading" secondItem="Ys2-JH-Bow" secondAttribute="leading" constant="16" id="yNH-wN-VyS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ys2-JH-Bow"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="accountTabItem" id="7me-pc-QG7">
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="FMp-ZS-RSE" id="Wqs-dg-P1M"/>
+                        <outlet property="profilePicture" destination="u9o-7c-RIL" id="j2T-h4-bnM"/>
+                        <segue destination="RtI-Gf-olH" kind="unwind" identifier="goToLogIn" unwindAction="unwindToLogInSegue:" id="MBc-pH-3yD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NB2-Sq-HBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="RtI-Gf-olH" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="857" y="-1184"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="Gtr-lL-jWK">
@@ -300,12 +395,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bro-06-kcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="161"/>
+            <point key="canvasLocation" x="858" y="162"/>
         </scene>
     </scenes>
     <resources>
         <image name="account.png" width="128" height="128"/>
+        <image name="accountTabItem" width="25" height="25"/>
         <image name="logo.png" width="128" height="128"/>
+        <image name="logoTabItem" width="25" height="25"/>
         <image name="password.png" width="128" height="128"/>
     </resources>
 </document>

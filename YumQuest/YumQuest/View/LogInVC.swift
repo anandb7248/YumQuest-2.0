@@ -14,15 +14,18 @@ import FirebaseAuth
 import Firebase
 
 class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
-    
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
+    var fbName:String?
+    var fbPicUrl:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set the textfields delegate to self in order to use textFieldShouldReturn properly
         self.usernameTF.delegate = self
         self.passwordTF.delegate = self
         
+        // Create Facebook button
         let fbLoginButton = FBSDKLoginButton()
         fbLoginButton.frame = CGRect(x:35,y:575,width:343,height:55)
         view.addSubview(fbLoginButton)
@@ -44,7 +47,6 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
         return true
     }
 
-    //
     @IBAction func logInPressed(_ sender: Any) {
     }
     
@@ -55,15 +57,26 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
             return
         }
         else{
-            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields":"id, name, email"]).start {
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields":"id,name,first_name,last_name, email,picture.width(256).height(256)"]).start {
                 (connection, result, err) in
                 
                 if err != nil{
                     print("Failed to start graph request:",err!)
                 }
                 
-                print(result!)
-                //
+                // Obtain Facebook users full name and picture.
+                if let data = result as? [String: Any]{
+                    self.fbName = data["name"] as? String
+                    
+                    if let picture = data["picture"] as? [String:Any]{
+                        if let data = picture["data"] as? [String:Any]{
+                            if let url = data["url"] as? String{
+                                self.fbPicUrl = url
+                            }
+                        }
+                    }
+                }
+                
                 let accessToken = FBSDKAccessToken.current()
                 guard let accessTokenString = accessToken?.tokenString else { return }
                 let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
@@ -73,11 +86,15 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
                     }
                     //
                     print("Successfully logged in")
+                    
+                    // Segue to Profile screen
+                    self.performSegue(withIdentifier: "segueToProfile", sender: nil)
                 })
             }
         }
     }
     
+    // When logout is pressed on Facebook the following function is called
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logged out")
     }
@@ -92,4 +109,17 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueToProfile"){
+            let tabController = segue.destination as! UITabBarController
+            let destVC = tabController.viewControllers![0] as! ProfileVC
+            destVC.name = fbName
+            destVC.fbUrl  = fbPicUrl
+        }
+     }
+    
+    @IBAction func unwindToLogIn(segue:UIStoryboardSegue) { }
+    
 }
