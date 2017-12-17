@@ -13,22 +13,19 @@ import FBSDKLoginKit
 import FirebaseAuth
 import Firebase
 
-class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
+class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = true
+        self.usernameTF.delegate = self
+        self.passwordTF.delegate = self
         
         let fbLoginButton = FBSDKLoginButton()
-    
         fbLoginButton.frame = CGRect(x:35,y:575,width:343,height:55)
-        
         view.addSubview(fbLoginButton)
-        
         fbLoginButton.delegate = self
         fbLoginButton.readPermissions = ["email", "public_profile"]
     }
@@ -37,10 +34,21 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    // Hide keyboard when tap outside of keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    // Hide keyboard when return is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
+    //
     @IBAction func logInPressed(_ sender: Any) {
     }
     
+    // Facebook login button
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil{
             print(error)
@@ -74,6 +82,7 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate {
         print("Logged out")
     }
     
+    // The following two functions are used to hide the navigation bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

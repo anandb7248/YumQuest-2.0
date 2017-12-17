@@ -72,7 +72,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZH-Av-40L">
                                 <rect key="frame" x="122" y="630.5" width="128" height="16.5"/>
@@ -222,7 +222,7 @@
                                 <rect key="frame" x="16" y="450" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bM-kD-bYS">
                                 <rect key="frame" x="54" y="488" width="137" height="23.5"/>
@@ -234,7 +234,7 @@
                                 <rect key="frame" x="16" y="519" width="342" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUo-Bx-3dC">
                                 <rect key="frame" x="79" y="576" width="215" height="36"/>
@@ -243,6 +243,9 @@
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="logInPressed:" destination="KNc-Ih-g27" eventType="touchUpInside" id="quq-0a-Vsd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92086373730000004" green="0.62228382289999995" blue="0.2672160818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -287,10 +290,17 @@
                         <viewLayoutGuide key="safeArea" id="4oE-WH-KEp"/>
                     </view>
                     <navigationItem key="navigationItem" id="8Z1-Ku-aP8"/>
+                    <connections>
+                        <outlet property="confirmPasswordTF" destination="ojG-N8-WGH" id="Yp0-pn-Sh3"/>
+                        <outlet property="emailTF" destination="FHW-W1-BCV" id="Yu8-XB-QzR"/>
+                        <outlet property="firstNameTF" destination="QSx-m4-rwv" id="1ZA-KD-tpa"/>
+                        <outlet property="lastNameTF" destination="tGk-eY-4Nw" id="6di-kF-xPf"/>
+                        <outlet property="passwordTF" destination="vfF-ng-p26" id="5ej-lt-Hi8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bro-06-kcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="162"/>
+            <point key="canvasLocation" x="846" y="161"/>
         </scene>
     </scenes>
     <resources>
