@@ -46,7 +46,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-                moveTextField(textField: confirmPasswordTF, moveDistance: -200, up: false)
+        moveTextField(textField: confirmPasswordTF, moveDistance: -200, up: false)
     }
     
     
@@ -76,7 +76,4 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
     }
     */
-    
-
-
 }
