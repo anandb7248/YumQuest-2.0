@@ -41,13 +41,16 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueInfoTVC", for: indexPath) as! VenueInfoTVC
         
-        //let restaurant = searchForVenuesResponse?.response.venues[indexPath.row]
-        let restaurant = venues![indexPath.row].getDetailsOfVenueResponse?.response.venue
-        //listOfNearbyRestaurants[indexPath.row]
-        
-        cell.nameLabel.text = restaurant?.name
-        cell.ratingLabel.text = getFormattedRating(ratingDouble: restaurant?.rating)
-        cell.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant?.ratingColor)
+        // check if venues has values first.
+        if let venues = venues {
+            if let restaurant = venues[indexPath.row].getDetailsOfVenueResponse?.response.venue {
+                cell.nameLabel.text = restaurant.name
+                cell.ratingLabel.text = getFormattedRating(ratingDouble: restaurant.rating)
+                cell.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
+                cell.categoryLabel.text = restaurant.categories[0].name
+                cell.pricetierLabel.text = restaurant.price.currency
+            }
+        }
         
         return cell
     }
@@ -153,45 +156,45 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         guard let foursquareSearchNearbyFoodURL = URL(string: "https://api.foursquare.com/v2/venues/search?v=20161016&ll=\(lat)%2C%20\(lon)&intent=checkin&radius=1000&categoryId=4d4b7105d754a06374d81259&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL") else
             { return }
         // https://api.foursquare.com/v2/venues/search?v=20161016&ll=37.7739%2C%20-122.431&intent=checkin&radius=1000&categoryId=4d4b7105d754a06374d81259&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL
-        // WORKS
-        //print(foursquareSearchNearbyFoodURL!)
         
         URLSession.shared.dataTask(with: foursquareSearchNearbyFoodURL) { (data, response, error) in
             // Check error
             if error != nil {
                 print(error.debugDescription)
             }
-
-            guard let data = data else { return }
-            do {
-                self.searchForVenuesResponse = try JSONDecoder().decode(SearchForVenuesResponse.self, from: data)
-                guard let responseVenues = self.searchForVenuesResponse else { return }
-                // Check Response Status
-                if responseVenues.meta.code != 200 {
-                    print("Json response failed")
-                    return
+            
+            if let data = data {
+                do {
+                    self.searchForVenuesResponse = try JSONDecoder().decode(SearchForVenuesResponse.self, from: data)
+                    guard let responseVenues = self.searchForVenuesResponse else { return }
+                    // Check Response Status
+                    if responseVenues.meta.code != 200 {
+                        print("Json response failed")
+                        return
+                    }
+                    
+                    var tempVenues:[DetailFoodVenue] = []
+                    
+                    for venue in (self.searchForVenuesResponse?.response.venues)! {
+                        //print(venue.name)
+                        // Use the venue id's to create new DetailVenue objects
+                        //print(venue.id)
+                        tempVenues.append(DetailFoodVenue(venueId: venue.id))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.searchForVenuesResponse = responseVenues
+                        self.venues = tempVenues
+                        self.tableView.reloadData()
+                    }
+                    
+                }catch {
+                    print("Did not work!")
                 }
-                
-                var tempVenues:[DetailFoodVenue] = []
-                
-                // TEST print
-                for venue in (self.searchForVenuesResponse?.response.venues)! {
-                    //print(venue.name)
-                    // Use the venue id's to create new DetailVenue objects
-                    //print(venue.id)
-                    tempVenues.append(DetailFoodVenue(venueId: venue.id))
-                }
-                
-                DispatchQueue.main.async {
-                    self.searchForVenuesResponse = responseVenues
-                    self.venues = tempVenues
-                    self.tableView.reloadData()
-                }
-                
-            }catch {
-                print("Did not work!")
             }
-
+            else {
+                return
+            }
         }.resume()
     }
     

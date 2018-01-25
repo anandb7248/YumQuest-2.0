@@ -11,6 +11,9 @@ import UIKit
 class VenueInfoTVC: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var pricetierLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -39,14 +39,30 @@ class DetailFoodVenue {
                 let rating : Double?
                 let ratingColor : String?
                 let contact : ContactInfo
+                let location : LocationInfo
+                let price : PriceInfo
+                let categories : [CategoryInfo]
                 
                 struct ContactInfo : Decodable {
                     let phone : String?
                     let formattedPhone : String?
                 }
+                
+                struct LocationInfo : Decodable {
+                    let address : String?
+                    let crossStreet : String?
+                    let distance : Int?
+                }
+                
+                struct PriceInfo : Decodable {
+                    let currency : String?
+                }
+                
+                struct CategoryInfo : Decodable {
+                    let name : String?
+                }
             }
         }
-        
     }
     
     init(venueId : String){
@@ -64,34 +80,33 @@ class DetailFoodVenue {
                 print(error.debugDescription)
             }
             
-            guard let data = data else { return }
-            
-            do {
-                // Failing
-                self.getDetailsOfVenueResponse = try JSONDecoder().decode(GetDetailsOfVenueResponse.self, from: data)
-                // Failing
-                
-                guard let venueDetailResponse = self.getDetailsOfVenueResponse else { return }
-                
-                // Check Response Status
-                if venueDetailResponse.meta.code != 200 {
-                    print("JSON response failed in DetailFoodVenue")
-                    return
+            if let data = data {
+                do {
+                    self.getDetailsOfVenueResponse = try JSONDecoder().decode(GetDetailsOfVenueResponse.self, from: data)
+                    
+                    guard let venueDetailResponse = self.getDetailsOfVenueResponse else { return }
+                    
+                    // Check Response Status
+                    if venueDetailResponse.meta.code != 200 {
+                        print("JSON response failed in DetailFoodVenue")
+                        return
+                    }
+                    
+                    // Test print
+                    print(venueDetailResponse.response.venue.name)
+                    print(venueDetailResponse.response.venue.contact.formattedPhone ?? "No formatted phone")
+                    print(String(describing: venueDetailResponse.response.venue.rating))
+                    print(venueDetailResponse.response.venue.location.distance ?? "CAN'T FIND DISTANCE")
+                    print(venueDetailResponse.response.venue.location.address ?? "CAN'T GET ADDRESS")
+                    
+                    DispatchQueue.main.async {
+                        self.getDetailsOfVenueResponse = venueDetailResponse
+                    }
+                    
+                } catch {
+                    print("Do block failed in Detail Food Venue for id: " + venueId)
                 }
-                
-                // Test print
-                print(venueDetailResponse.response.venue.name)
-                print(venueDetailResponse.response.venue.contact.formattedPhone ?? "No formatted phone")
-                print(String(describing: venueDetailResponse.response.venue.rating))
-                
-                DispatchQueue.main.async {
-                    self.getDetailsOfVenueResponse = venueDetailResponse
-                }
-                
-            } catch {
-                print("Do block failed in Detail Food Venue for id: " + venueId)
             }
-            
         }.resume()
     }
 }
