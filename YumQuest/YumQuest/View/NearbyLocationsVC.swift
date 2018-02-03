@@ -24,9 +24,9 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         getUsersCurrentCoordinates()
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,6 +49,19 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
                 cell.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
                 cell.categoryLabel.text = restaurant.categories[0].name
                 cell.pricetierLabel.text = restaurant.price.currency
+                if let address = restaurant.location.address {
+                    if let city = restaurant.location.city {
+                        if let state = restaurant.location.state {
+                            cell.addressLabel.text = address + ", " + city + ", " + state
+                        }else{
+                            cell.addressLabel.text = address + ", " + city
+                        }
+                    }else{
+                        cell.addressLabel.text = address
+                    }
+                }else{
+                    cell.addressLabel.text = "Address Unknown"
+                }
             }
         }
         
@@ -198,13 +211,13 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         }.resume()
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "showRestaurantDetails"){
+            let destVC = segue.destination as! RestaurantDetailsVC
+            destVC.venue = venues?[(tableView.indexPathForSelectedRow?.row)!]
+        }
     }
-    */
 }

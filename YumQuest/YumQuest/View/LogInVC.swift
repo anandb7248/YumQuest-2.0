@@ -19,6 +19,17 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
     var fbName:String?
     var fbPicUrl:String?
     
+    // Persist data
+    var filePath: String {
+        //1 - manager lets you examine contents of a files and folders in your app; creates a directory to where we are saving it
+        let manager = FileManager.default
+        //2 - this returns an array of urls from our documentDirectory and we take the first path
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
+        //3 - creates a new path component and creates a new file called "Data" which is where we will store our Data array.
+        return (url!.appendingPathComponent("FB_Info").path)
+    }
+    // Persist data
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the textfields delegate to self in order to use textFieldShouldReturn properly
@@ -47,6 +58,7 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
         return true
     }
 
+    // When the user pressed the YumQuest Log In button
     @IBAction func logInPressed(_ sender: Any) {
     }
     
@@ -72,6 +84,9 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
                         if let data = picture["data"] as? [String:Any]{
                             if let url = data["url"] as? String{
                                 self.fbPicUrl = url
+                                // Create a FBUserCache object
+                                let userInfo = FBUserCache(fbName: self.fbName!, fbPicUrl: self.fbPicUrl!)
+                                NSKeyedArchiver.archiveRootObject(userInfo, toFile: self.filePath)
                             }
                         }
                     }
@@ -80,11 +95,12 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
                 let accessToken = FBSDKAccessToken.current()
                 guard let accessTokenString = accessToken?.tokenString else { return }
                 let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+                
                 Auth.auth().signIn(with: credentials, completion: { (user,error) in
                     if error != nil {
                         print("Something went wrong",error!)
                     }
-                    //
+                    
                     print("Successfully logged in")
                     
                     // Segue to Profile screen
@@ -112,12 +128,14 @@ class LogInVC: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        /*
         if(segue.identifier == "segueToProfile"){
             let tabController = segue.destination as! UITabBarController
             let destVC = tabController.viewControllers![0] as! ProfileVC
             destVC.name = fbName
             destVC.fbUrl  = fbPicUrl
         }
+        */
      }
     
     @IBAction func unwindToLogIn(segue:UIStoryboardSegue) { }

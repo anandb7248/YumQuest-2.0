@@ -11,9 +11,11 @@
 		1528D2291FED88A500007802 /* VenueInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1528D2281FED88A500007802 /* VenueInfoTVC.swift */; };
 		1547A7151FE63A2600FA25E2 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547A7141FE63A2600FA25E2 /* ProfileVC.swift */; };
 		1547A71D1FE663DC00FA25E2 /* NearbyLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */; };
+		154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A67B5202659A400E1ED6D /* FBUserCache.swift */; };
 		157179DB1FE2135C00C5A167 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DA1FE2135C00C5A167 /* logo.png */; };
 		157179DE1FE2155700C5A167 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DC1FE2155600C5A167 /* account.png */; };
 		157179DF1FE2155700C5A167 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DD1FE2155600C5A167 /* password.png */; };
+		157A56AC201A7F9100F60F4F /* RestaurantDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A56AB201A7F9100F60F4F /* RestaurantDetailsVC.swift */; };
 		157EA0901FE2E2CE00771E22 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EA08F1FE2E2CE00771E22 /* SignUpVC.swift */; };
 		15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071371FE2097E003DE1E0 /* AppDelegate.swift */; };
 		15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A071391FE2097E003DE1E0 /* LogInVC.swift */; };
@@ -53,9 +55,11 @@
 		1528D2281FED88A500007802 /* VenueInfoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueInfoTVC.swift; sourceTree = "<group>"; };
 		1547A7141FE63A2600FA25E2 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyLocationsVC.swift; sourceTree = "<group>"; };
+		154A67B5202659A400E1ED6D /* FBUserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserCache.swift; sourceTree = "<group>"; };
 		157179DA1FE2135C00C5A167 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		157179DC1FE2155600C5A167 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		157179DD1FE2155600C5A167 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
+		157A56AB201A7F9100F60F4F /* RestaurantDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsVC.swift; sourceTree = "<group>"; };
 		157B6E6A1FE2461F00C9799F /* YumQuest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YumQuest.entitlements; sourceTree = "<group>"; };
 		157EA08F1FE2E2CE00771E22 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		15A071341FE2097E003DE1E0 /* YumQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,7 @@
 				15A071391FE2097E003DE1E0 /* LogInVC.swift */,
 				1547A7141FE63A2600FA25E2 /* ProfileVC.swift */,
 				1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */,
+				157A56AB201A7F9100F60F4F /* RestaurantDetailsVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				15A287011FE8E0E000176825 /* SearchVenueResponse.swift */,
 				15A287031FE8E13A00176825 /* Menu.swift */,
 				151A74E620126FC7008DAECE /* DetailsOfVenueResponse.swift */,
+				154A67B5202659A400E1ED6D /* FBUserCache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,8 +563,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157A56AC201A7F9100F60F4F /* RestaurantDetailsVC.swift in Sources */,
 				1547A7151FE63A2600FA25E2 /* ProfileVC.swift in Sources */,
 				157EA0901FE2E2CE00771E22 /* SignUpVC.swift in Sources */,
+				154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */,
 				151A74E720126FC7008DAECE /* DetailsOfVenueResponse.swift in Sources */,
 				15A287041FE8E13A00176825 /* Menu.swift in Sources */,
 				1528D2291FED88A500007802 /* VenueInfoTVC.swift in Sources */,

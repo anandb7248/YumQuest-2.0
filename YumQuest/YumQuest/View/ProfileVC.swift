@@ -17,11 +17,29 @@ class ProfileVC: UIViewController,FBSDKLoginButtonDelegate{
     @IBOutlet weak var nameLabel: UILabel!
     var name:String?
     var fbUrl:String?
+    // Persist data
+    var filePath: String {
+        //1 - manager lets you examine contents of a files and folders in your app; creates a directory to where we are saving it
+        let manager = FileManager.default
+        //2 - this returns an array of urls from our documentDirectory and we take the first path
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
+        //3 - creates a new path component and creates a new file called "Data" which is where we will store our Data array.
+        return (url!.appendingPathComponent("FB_Info").path)
+    }
+    // Persist data
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = name
-        loadImage(urlString: fbUrl!, view: profilePicture)
+        
+        //nameLabel.text = name
+        //loadImage(urlString: fbUrl!, view: profilePicture)
+        // Find a way to get the FB contents in this VC rather than performing them in the LoginVC and passing the data.
+        
+        // Load FBUserCache data from disk
+        if let fbData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? FBUserCache {
+            nameLabel.text = fbData.fbName
+            loadImage(urlString: fbData.fbPicUrl, view: profilePicture)
+        }
         
         // Create Facebook button
         let fbLoginButton = FBSDKLoginButton()
@@ -67,7 +85,6 @@ class ProfileVC: UIViewController,FBSDKLoginButtonDelegate{
             }
             
         }
-        
         downloadPictureTask.resume()
     }
 
@@ -76,7 +93,6 @@ class ProfileVC: UIViewController,FBSDKLoginButtonDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

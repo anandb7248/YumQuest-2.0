@@ -50,8 +50,9 @@ class DetailFoodVenue {
                 
                 struct LocationInfo : Decodable {
                     let address : String?
-                    let crossStreet : String?
                     let distance : Int?
+                    let city: String?
+                    let state: String?
                 }
                 
                 struct PriceInfo : Decodable {

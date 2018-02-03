@@ -17,10 +17,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
             FirebaseApp.configure()
+        
+        // Check if the user has already logged into Facebook
+        if(FBSDKAccessToken.current() != nil){
+            print("ALREADY LOGGED INTO FACEBOOK")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TableViewVC")
+           // let profileVC = storyboard.instantiateViewController(withIdentifier: "Profile")
+            
+            // Set fbUrl and profilePicture variables in the ProfileVC
+            //  loadImage(urlString: fbUrl!, view: profilePicture)
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+        }else{
+            print("NOT LOGGED IN TO FACEBOOK")
+        }
+        
+        // FBSDKAccessToken.current() != nil
+        
         /*
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
