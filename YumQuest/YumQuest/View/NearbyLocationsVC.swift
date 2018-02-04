@@ -27,15 +27,38 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         getUsersCurrentCoordinates()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = searchForVenuesResponse?.response.venues.count else {return 0}
+    // HIDE NAVIGATION BAR
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        return count
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    // HIDE NAVIGATION BAR
+    
+    // TOGGLE VENUES WITH MENUS
+    
+    // TOGGLE VENUES WITH MENUS
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let ven = venues {
+            return ven.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,8 +111,6 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
         }
-        
-        //cString.characters.count
         
         if ((cString.count) != 6) {
             return UIColor.gray
@@ -179,29 +200,40 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
             if let data = data {
                 do {
                     self.searchForVenuesResponse = try JSONDecoder().decode(SearchForVenuesResponse.self, from: data)
-                    guard let responseVenues = self.searchForVenuesResponse else { return }
-                    // Check Response Status
-                    if responseVenues.meta.code != 200 {
-                        print("Json response failed")
-                        return
+                    if let responseVenues = self.searchForVenuesResponse {
+                        // Check Response Status
+                        if responseVenues.meta.code != 200 {
+                            print("Json response failed")
+                            return
+                        }
+                        var tempVenues:[DetailFoodVenue] = []
+                        for venue in responseVenues.response.venues {
+                            //print(venue.name)
+                            // Use the venue id's to create new DetailVenue objects
+                            //print(venue.id)
+                            //tempVenues.append(DetailFoodVenue(venueId: venue.id))
+                            tempVenues.append(DetailFoodVenue(venueId: venue.id))
+                            //self.tableView.reloadData()
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.searchForVenuesResponse = responseVenues
+                            self.venues = tempVenues
+                            //self.tableView.reloadData()
+                            self.tableView.reloadData()
+                        }
+                        /*
+                        //(self.searchForVenuesResponse?.response.venues)!
+                        for venue in responseVenues.response.venues {
+                            //print(venue.name)
+                            // Use the venue id's to create new DetailVenue objects
+                            //print(venue.id)
+                            tempVenues.append(DetailFoodVenue(venueId: venue.id))
+                        }
+                        */
                     }
-                    
-                    var tempVenues:[DetailFoodVenue] = []
-                    
-                    for venue in (self.searchForVenuesResponse?.response.venues)! {
-                        //print(venue.name)
-                        // Use the venue id's to create new DetailVenue objects
-                        //print(venue.id)
-                        tempVenues.append(DetailFoodVenue(venueId: venue.id))
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.searchForVenuesResponse = responseVenues
-                        self.venues = tempVenues
-                        self.tableView.reloadData()
-                    }
-                    
-                }catch {
+                }
+                catch {
                     print("Did not work!")
                 }
             }
@@ -217,7 +249,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showRestaurantDetails"){
             let destVC = segue.destination as! RestaurantDetailsVC
-            destVC.venue = venues?[(tableView.indexPathForSelectedRow?.row)!]
+            destVC.detailFoodVenue = venues?[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
 }

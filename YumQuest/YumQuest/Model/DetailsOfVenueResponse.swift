@@ -41,8 +41,9 @@ class DetailFoodVenue {
                 let contact : ContactInfo
                 let location : LocationInfo
                 let price : PriceInfo
+                let hasMenu: Bool?
                 let categories : [CategoryInfo]
-                
+
                 struct ContactInfo : Decodable {
                     let phone : String?
                     let formattedPhone : String?
@@ -85,23 +86,33 @@ class DetailFoodVenue {
                 do {
                     self.getDetailsOfVenueResponse = try JSONDecoder().decode(GetDetailsOfVenueResponse.self, from: data)
                     
-                    guard let venueDetailResponse = self.getDetailsOfVenueResponse else { return }
-                    
-                    // Check Response Status
-                    if venueDetailResponse.meta.code != 200 {
-                        print("JSON response failed in DetailFoodVenue")
-                        return
-                    }
-                    
-                    // Test print
-                    print(venueDetailResponse.response.venue.name)
-                    print(venueDetailResponse.response.venue.contact.formattedPhone ?? "No formatted phone")
-                    print(String(describing: venueDetailResponse.response.venue.rating))
-                    print(venueDetailResponse.response.venue.location.distance ?? "CAN'T FIND DISTANCE")
-                    print(venueDetailResponse.response.venue.location.address ?? "CAN'T GET ADDRESS")
-                    
-                    DispatchQueue.main.async {
-                        self.getDetailsOfVenueResponse = venueDetailResponse
+                    if let venueDetailResponse = self.getDetailsOfVenueResponse {
+                        // Check Response Status
+                        if venueDetailResponse.meta.code != 200 {
+                            print("JSON response failed in DetailFoodVenue")
+                            return
+                        }
+                        // Test print
+                        print(venueDetailResponse.response.venue.name)
+                        print(venueDetailResponse.response.venue.contact.formattedPhone ?? "No formatted phone")
+                        print(String(describing: venueDetailResponse.response.venue.rating))
+                        print(venueDetailResponse.response.venue.location.distance ?? "CAN'T FIND DISTANCE")
+                        print(venueDetailResponse.response.venue.location.address ?? "CAN'T GET ADDRESS")
+                        // Test HasMenu
+                        if let hasMenu = venueDetailResponse.response.venue.hasMenu{
+                            if(hasMenu){
+                                print("Has Menu  + \(self.id)")
+                            }
+                            else{
+                                print("Does not have menu + \(self.id)")
+                            }
+                        }else{
+                            print("Does not have menu + \(self.id)")
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.getDetailsOfVenueResponse = venueDetailResponse
+                        }
                     }
                     
                 } catch {

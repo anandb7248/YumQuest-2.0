@@ -12,7 +12,6 @@ import FacebookLogin
 import FBSDKLoginKit
 
 class ProfileVC: UIViewController,FBSDKLoginButtonDelegate{
-    
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     var name:String?
@@ -85,6 +84,7 @@ class ProfileVC: UIViewController,FBSDKLoginButtonDelegate{
             }
             
         }
+        
         downloadPictureTask.resume()
     }
 
