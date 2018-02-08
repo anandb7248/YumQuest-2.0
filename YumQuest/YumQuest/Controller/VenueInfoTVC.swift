@@ -14,6 +14,7 @@ class VenueInfoTVC: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var pricetierLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var hasMenuIndicator: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -85,6 +85,16 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
                 }else{
                     cell.addressLabel.text = "Address Unknown"
                 }
+                
+                if let hasMenu = venues[indexPath.row].hasMenu {
+                    if hasMenu {
+                        cell.hasMenuIndicator.isHidden = false
+                    }else{
+                        cell.hasMenuIndicator.isHidden = true
+                    }
+                }else{
+                    cell.hasMenuIndicator.isHidden = true
+                }
             }
         }
         
@@ -216,7 +226,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
                             //self.tableView.reloadData()
                         }
                         
-                        DispatchQueue.main.async {
+                        DispatchQueue.global().async{
                             self.searchForVenuesResponse = responseVenues
                             self.venues = tempVenues
                             //self.tableView.reloadData()
@@ -234,7 +244,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
                     }
                 }
                 catch {
-                    print("Did not work!")
+                    print("Error!")
                 }
             }
             else {

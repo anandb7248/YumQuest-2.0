@@ -9,28 +9,36 @@
 import UIKit
 
 class RestaurantDetailsVC: UIViewController {
-
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var menuLabel: UILabel!  // Maybe should become a button
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var priceTierLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var viewMenuButton: UIButton!
+    @IBOutlet weak var numberOfReviewsLabel: UILabel!
     
     var detailFoodVenue:DetailFoodVenue?
+   //var menu: Menu?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let venue = detailFoodVenue?.getDetailsOfVenueResponse?.response.venue {
-            
             nameLabel.text = venue.name
             ratingLabel.text = getFormattedRating(ratingDouble: venue.rating)
             ratingLabel.backgroundColor = hexStringToUIColor(hex: venue.ratingColor)
-            typeLabel.text = venue.categories[0].name
-            priceTierLabel.text = venue.price.currency
             phoneNumberLabel.text = venue.contact.formattedPhone
+            if let numReviews = venue.ratingSignals{
+                numberOfReviewsLabel.text = String(numReviews) + " Reviews"
+            }
+            if let hasMenu = venue.hasMenu {
+                if(hasMenu){
+                    viewMenuButton.isHidden = false
+                }else{
+                    viewMenuButton.isHidden = true
+                }
+            }else{
+                viewMenuButton.isHidden = true
+            }
             if let address = venue.location.address {
                 if let city = venue.location.city {
                     if let state = venue.location.state {
@@ -45,6 +53,22 @@ class RestaurantDetailsVC: UIViewController {
                 addressLabel.text = "Address Unknown"
             }
         }
+        
+        if let id = detailFoodVenue?.id{
+            print("Going to Menu Retriever")
+            menuRetriever(id: id)
+        }
+    }
+    
+    // Helper Function - Menu Retriever
+    func menuRetriever(id : String){
+        // Use the incoming id to create a foursquare api request url
+        let foursquareGetMenuURL = URL(string: "https://api.foursquare.com/v2/venues/\(id)/menu?&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL&v=20180121")
+        
+        // "https://api.foursquare.com/v2/venues/5010936ce4b0abd8740f8fb7?&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL&v=20180121"
+        
+        print("Get a Venue's Menu Request")
+        print(foursquareGetMenuURL!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,8 +110,6 @@ class RestaurantDetailsVC: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-    
-
     /*
     // MARK: - Navigation
 
