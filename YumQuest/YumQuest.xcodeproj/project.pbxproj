@@ -29,6 +29,10 @@
 		15A287021FE8E0E000176825 /* SearchVenueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A287011FE8E0E000176825 /* SearchVenueResponse.swift */; };
 		15A287041FE8E13A00176825 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A287031FE8E13A00176825 /* Menu.swift */; };
 		15C5F17920279AD600E241DB /* restaurant_menu.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 15C5F17820279AD500E241DB /* restaurant_menu.svg.png */; };
+		15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5FE20202FADFF00147FBA /* MenuTableSection.swift */; };
+		15C5FE23202FAEAF00147FBA /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */; };
+		15F18BA3202C0EE7004BBFF7 /* MenuDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */; };
+		15F18BA5202C0F73004BBFF7 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */; };
 		15F1DDB01FE25EB700DFE026 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15F1DDAF1FE25EB700DFE026 /* GoogleService-Info.plist */; };
 		216BD6B3E8FC8791CD377AF5 /* Pods_YumQuestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DF8FD631DD8DAE96C2E26D /* Pods_YumQuestUITests.framework */; };
 		AEE667D9DE05B8D7A4F9EA8B /* Pods_YumQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44FCAA2FCD4FC2E0166BA09 /* Pods_YumQuest.framework */; };
@@ -82,6 +86,10 @@
 		15A287011FE8E0E000176825 /* SearchVenueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVenueResponse.swift; sourceTree = "<group>"; };
 		15A287031FE8E13A00176825 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		15C5F17820279AD500E241DB /* restaurant_menu.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_menu.svg.png; sourceTree = "<group>"; };
+		15C5FE20202FADFF00147FBA /* MenuTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableSection.swift; sourceTree = "<group>"; };
+		15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailsVC.swift; sourceTree = "<group>"; };
+		15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
 		15F1DDAF1FE25EB700DFE026 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F7DF7558768FE73646E3965 /* Pods-YumQuestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestTests/Pods-YumQuestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1FE6DA10C2EE6D460AAFC174 /* Pods-YumQuestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestTests/Pods-YumQuestTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +138,7 @@
 				1547A7141FE63A2600FA25E2 /* ProfileVC.swift */,
 				1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */,
 				157A56AB201A7F9100F60F4F /* RestaurantDetailsVC.swift */,
+				15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +221,8 @@
 				15A287031FE8E13A00176825 /* Menu.swift */,
 				151A74E620126FC7008DAECE /* DetailFoodVenue.swift */,
 				154A67B5202659A400E1ED6D /* FBUserCache.swift */,
+				15C5FE20202FADFF00147FBA /* MenuTableSection.swift */,
+				15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				1528D2281FED88A500007802 /* VenueInfoTVC.swift */,
+				15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -574,7 +586,9 @@
 				157A56AC201A7F9100F60F4F /* RestaurantDetailsVC.swift in Sources */,
 				1547A7151FE63A2600FA25E2 /* ProfileVC.swift in Sources */,
 				157EA0901FE2E2CE00771E22 /* SignUpVC.swift in Sources */,
+				15F18BA3202C0EE7004BBFF7 /* MenuDetailsVC.swift in Sources */,
 				154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */,
+				15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */,
 				151A74E720126FC7008DAECE /* DetailFoodVenue.swift in Sources */,
 				15A287041FE8E13A00176825 /* Menu.swift in Sources */,
 				1528D2291FED88A500007802 /* VenueInfoTVC.swift in Sources */,
@@ -582,6 +596,8 @@
 				15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */,
 				15A287021FE8E0E000176825 /* SearchVenueResponse.swift in Sources */,
 				1547A71D1FE663DC00FA25E2 /* NearbyLocationsVC.swift in Sources */,
+				15C5FE23202FAEAF00147FBA /* ExpandableHeaderView.swift in Sources */,
+				15F18BA5202C0F73004BBFF7 /* MenuTVC.swift in Sources */,
 				15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

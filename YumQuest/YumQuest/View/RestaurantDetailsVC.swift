@@ -9,6 +9,7 @@
 import UIKit
 
 class RestaurantDetailsVC: UIViewController {
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -17,7 +18,6 @@ class RestaurantDetailsVC: UIViewController {
     @IBOutlet weak var numberOfReviewsLabel: UILabel!
     
     var detailFoodVenue:DetailFoodVenue?
-   //var menu: Menu?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +76,11 @@ class RestaurantDetailsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func viewMenuPressed(_ sender: Any) {
+        //performSegue(withIdentifier: "showMenu", sender: nil)
+    }
+    
     func getFormattedRating(ratingDouble : Double?) -> String{
         if let rating = ratingDouble {
             let ratingStr = String(Double(round(10*rating)/10))
@@ -110,14 +115,15 @@ class RestaurantDetailsVC: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showMenu"){
+            let destVC = segue.destination as! MenuDetailsVC
+            destVC.restaurantDetails = detailFoodVenue
+        }
     }
-    */
-
 }
+

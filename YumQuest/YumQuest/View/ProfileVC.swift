@@ -53,6 +53,7 @@ class ProfileVC: UIViewController,FBSDKLoginButtonDelegate{
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         // Segue to Log In
+        print("Log Out in Profile")
         performSegue(withIdentifier: "goToLogIn", sender: self)
     }
     

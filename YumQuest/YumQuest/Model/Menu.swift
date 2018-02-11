@@ -39,12 +39,6 @@ struct Menu : Codable {
                                 let count : Int?
                                 let items : [MenuItem]?
                                 
-                                struct MenuItem : Codable{
-                                    let entryId : String?
-                                    let name : String?
-                                    let description : String?
-                                    let price : String?
-                                }
                             }
                         }
                     }
@@ -52,4 +46,11 @@ struct Menu : Codable {
             }
         }
     }
+}
+
+struct MenuItem : Codable{
+    let entryId : String?
+    let name : String?
+    let description : String?
+    let price : String?
 }
