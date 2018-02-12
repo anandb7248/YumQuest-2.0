@@ -13,6 +13,7 @@
 		1547A71D1FE663DC00FA25E2 /* NearbyLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */; };
 		154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A67B5202659A400E1ED6D /* FBUserCache.swift */; };
 		154A67B820268C7300E1ED6D /* menuToggle.png in Resources */ = {isa = PBXBuildFile; fileRef = 154A67B720268C7300E1ED6D /* menuToggle.png */; };
+		15576EEA2031054300FE0C24 /* GetNearbyVenues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15576EE92031054300FE0C24 /* GetNearbyVenues.swift */; };
 		157179DB1FE2135C00C5A167 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DA1FE2135C00C5A167 /* logo.png */; };
 		157179DE1FE2155700C5A167 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DC1FE2155600C5A167 /* account.png */; };
 		157179DF1FE2155700C5A167 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 157179DD1FE2155600C5A167 /* password.png */; };
@@ -63,6 +64,7 @@
 		1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyLocationsVC.swift; sourceTree = "<group>"; };
 		154A67B5202659A400E1ED6D /* FBUserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserCache.swift; sourceTree = "<group>"; };
 		154A67B720268C7300E1ED6D /* menuToggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuToggle.png; sourceTree = "<group>"; };
+		15576EE92031054300FE0C24 /* GetNearbyVenues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNearbyVenues.swift; sourceTree = "<group>"; };
 		157179DA1FE2135C00C5A167 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		157179DC1FE2155600C5A167 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		157179DD1FE2155600C5A167 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				154A67B5202659A400E1ED6D /* FBUserCache.swift */,
 				15C5FE20202FADFF00147FBA /* MenuTableSection.swift */,
 				15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */,
+				15576EE92031054300FE0C24 /* GetNearbyVenues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				15A287021FE8E0E000176825 /* SearchVenueResponse.swift in Sources */,
 				1547A71D1FE663DC00FA25E2 /* NearbyLocationsVC.swift in Sources */,
 				15C5FE23202FAEAF00147FBA /* ExpandableHeaderView.swift in Sources */,
+				15576EEA2031054300FE0C24 /* GetNearbyVenues.swift in Sources */,
 				15F18BA5202C0F73004BBFF7 /* MenuTVC.swift in Sources */,
 				15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */,
 			);

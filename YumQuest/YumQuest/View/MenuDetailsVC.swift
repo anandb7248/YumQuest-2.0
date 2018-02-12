@@ -141,7 +141,6 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         )
     }
 
-    
     /*
     // MARK: - Navigation
 

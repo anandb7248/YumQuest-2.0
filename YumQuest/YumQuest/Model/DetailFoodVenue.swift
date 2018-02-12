@@ -91,8 +91,9 @@ class DetailFoodVenue {
                                 }
                             }
                             
-                            DispatchQueue.main.async {
+                            DispatchQueue.main.sync {
                                 self.getDetailsOfVenueResponse = venueDetailResponse
+                                NotificationCenter.default.post(name: .reload, object: nil)
                             }
                         }
                         
@@ -151,11 +152,11 @@ class DetailFoodVenue {
                                 }
                             }
                             
-                            /*
-                            DispatchQueue.main.async {
+                            DispatchQueue.main.sync {
                                 self.menu = menuResponse
+                                NotificationCenter.default.post(name: .reload, object: nil)
                             }
-                            */
+                            
                         }
                         
                     } catch {

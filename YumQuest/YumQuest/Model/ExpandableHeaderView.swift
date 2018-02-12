@@ -63,7 +63,9 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     
     func setCollapsed(_ collapsed: Bool) {
         // Animate the arrow rotation (see Extensions.swf)
-        arrowLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+        if(!collapsed){
+            arrowLabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+        }
     }
     
     /*

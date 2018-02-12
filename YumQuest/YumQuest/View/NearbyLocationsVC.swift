@@ -16,14 +16,17 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     var currentLon:CLLocationDegrees?
     
     // Foursquare API venue response
-    var searchForVenuesResponse:SearchForVenuesResponse?
-    var venues:[DetailFoodVenue]?
+    var nearbyVenues:GetNearbyVenuesHelper?
+    //var searchForVenuesResponse:SearchForVenuesResponse?
+    //var venues:[DetailFoodVenue]?
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // For notification to use to reload the table view data when the api requests have been completed
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: .reload, object: nil)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         getUsersCurrentCoordinates()
     }
@@ -31,6 +34,10 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func reloadTableData(_ notification: Notification) {
+        tableView.reloadData()
     }
     
     // HIDE NAVIGATION BAR
@@ -54,7 +61,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     // TOGGLE VENUES WITH MENUS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let ven = venues {
+        if let ven = nearbyVenues?.venues {
             return ven.count
         }else{
             return 0
@@ -65,7 +72,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueInfoTVC", for: indexPath) as! VenueInfoTVC
         
         // check if venues has values first.
-        if let venues = venues {
+        if let venues = nearbyVenues?.venues {
             if let restaurant = venues[indexPath.row].getDetailsOfVenueResponse?.response.venue {
                 cell.nameLabel.text = restaurant.name
                 cell.ratingLabel.text = getFormattedRating(ratingDouble: restaurant.rating)
@@ -154,9 +161,10 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         if let location = locations.first{
             currentLat = location.coordinate.latitude
             currentLon = location.coordinate.longitude
-            getNearbyVenues(latitude: currentLat, longitude: currentLon)
-            print(currentLat!)
-            print(currentLon!)
+            //getNearbyVenues(latitude: currentLat, longitude: currentLon)
+            //print(currentLat!)
+            //print(currentLon!)
+            self.nearbyVenues = GetNearbyVenuesHelper(latitude: self.currentLat, longitude: self.currentLon)
         }
     }
     
@@ -188,6 +196,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     }
     // END Location functions
     
+    /*
     func getNearbyVenues(latitude: CLLocationDegrees?, longitude: CLLocationDegrees?){
         guard let lat = latitude, let lon = longitude
             else {
@@ -252,6 +261,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
             }
         }.resume()
     }
+    */
     
     // MARK: - Navigation
 
@@ -259,7 +269,8 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showRestaurantDetails"){
             let destVC = segue.destination as! RestaurantDetailsVC
-            destVC.detailFoodVenue = venues?[(tableView.indexPathForSelectedRow?.row)!]
+            //destVC.detailFoodVenue = venues?[(tableView.indexPathForSelectedRow?.row)!]
+            destVC.detailFoodVenue = nearbyVenues?.venues![(tableView.indexPathForSelectedRow?.row)!]
         }
     }
 }
