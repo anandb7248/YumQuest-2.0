@@ -6,6 +6,7 @@
 //  Copyright © 2018 AnandBatjargal. All rights reserved.
 //
 import UIKit
+import Firebase
 
 class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CollapsibleTableViewHeaderDelegate {
     
@@ -20,8 +21,7 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     var sections = [MenuTableSection]()
     
-    // Sorted Array of Sections
-    // Sorted Array of Menu Items
+    var menuItemsRef: DatabaseReference  = Database.database().reference().child("MenuItems")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +78,32 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.itemNameLabel.text = sections[indexPath.section].menuItems[indexPath.row].name
         cell.priceLabel.text = sections[indexPath.section].menuItems[indexPath.row].price
         cell.descriptionLabel.text = sections[indexPath.section].menuItems[indexPath.row].description
+        
+        //cell.ratingLabel.text =
+        let id = sections[indexPath.section].menuItems[indexPath.row].entryId
+        
+        /*
+        menuItemsRef.child(id!).observeSingleEvent(of: .value, with: {(snapshot) in
+            //let value = snapshot.value
+            
+            cell.ratingLabel.text = value
+         })
+        */
+        menuItemsRef.child(id!).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let value = snapshot.value as? Double?{
+                if value! == 0.0 {
+                    cell.ratingLabel.text = "NA"
+                }else if value == 10.0{
+                    cell.ratingLabel.text = "10"
+                }else{
+                    cell.ratingLabel.text = String(format:"%.1f", value!)
+                }
+            }
+        })
+        
+        // Fill the menu item rating here
+        // Use the entryId to read from Firebase
+        //sections[indexPath.section].menuItems[indexPath.row].entryId
         
         return cell
     }
@@ -141,14 +167,21 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         )
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showItemDetails"){
+            let destVC = segue.destination as! ItemDetailsVC
+            
+            // Chosen should be a MenuItem
+            let chosenItem = sections[(tableView.indexPathForSelectedRow?.section)!].menuItems[(tableView.indexPathForSelectedRow?.row)!]
+            
+            destVC.menuItem = chosenItem
+            
+            if let restaurant = restaurantDetails {
+                destVC.venueName = restaurant.getDetailsOfVenueResponse?.response.venue.name
+            }
+        }
     }
-    */
-
 }

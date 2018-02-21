@@ -8,7 +8,12 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
 pod 'Firebase/Auth'
+pod 'Firebase'
+pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
+
+
 
   # Pods for YumQuest
 

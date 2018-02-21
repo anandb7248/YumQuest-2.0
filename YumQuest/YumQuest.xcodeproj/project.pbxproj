@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		151A74E720126FC7008DAECE /* DetailFoodVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A74E620126FC7008DAECE /* DetailFoodVenue.swift */; };
 		1528D2291FED88A500007802 /* VenueInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1528D2281FED88A500007802 /* VenueInfoTVC.swift */; };
+		15340D19203D02DB008ADECC /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15340D18203D02DB008ADECC /* ItemDetailsVC.swift */; };
 		1547A7151FE63A2600FA25E2 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547A7141FE63A2600FA25E2 /* ProfileVC.swift */; };
 		1547A71D1FE663DC00FA25E2 /* NearbyLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */; };
 		154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A67B5202659A400E1ED6D /* FBUserCache.swift */; };
@@ -29,6 +30,10 @@
 		15A0715B1FE2097E003DE1E0 /* YumQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0715A1FE2097E003DE1E0 /* YumQuestUITests.swift */; };
 		15A287021FE8E0E000176825 /* SearchVenueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A287011FE8E0E000176825 /* SearchVenueResponse.swift */; };
 		15A287041FE8E13A00176825 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A287031FE8E13A00176825 /* Menu.swift */; };
+		15B7F54220311A5500CE06B0 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B7F54120311A5500CE06B0 /* MapVC.swift */; };
+		15B7F54420311B2800CE06B0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B7F54320311B2800CE06B0 /* CoreLocation.framework */; };
+		15B7F547203121E800CE06B0 /* VenueLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B7F546203121E800CE06B0 /* VenueLocale.swift */; };
+		15C45ACA2033CB7F00050FED /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 15C45AC92033CB7F00050FED /* filter.png */; };
 		15C5F17920279AD600E241DB /* restaurant_menu.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 15C5F17820279AD500E241DB /* restaurant_menu.svg.png */; };
 		15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5FE20202FADFF00147FBA /* MenuTableSection.swift */; };
 		15C5FE23202FAEAF00147FBA /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */; };
@@ -60,6 +65,7 @@
 /* Begin PBXFileReference section */
 		151A74E620126FC7008DAECE /* DetailFoodVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodVenue.swift; sourceTree = "<group>"; };
 		1528D2281FED88A500007802 /* VenueInfoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueInfoTVC.swift; sourceTree = "<group>"; };
+		15340D18203D02DB008ADECC /* ItemDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
 		1547A7141FE63A2600FA25E2 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyLocationsVC.swift; sourceTree = "<group>"; };
 		154A67B5202659A400E1ED6D /* FBUserCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserCache.swift; sourceTree = "<group>"; };
@@ -87,6 +93,10 @@
 		15A0715C1FE2097E003DE1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15A287011FE8E0E000176825 /* SearchVenueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVenueResponse.swift; sourceTree = "<group>"; };
 		15A287031FE8E13A00176825 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		15B7F54120311A5500CE06B0 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		15B7F54320311B2800CE06B0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		15B7F546203121E800CE06B0 /* VenueLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueLocale.swift; sourceTree = "<group>"; };
+		15C45AC92033CB7F00050FED /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		15C5F17820279AD500E241DB /* restaurant_menu.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_menu.svg.png; sourceTree = "<group>"; };
 		15C5FE20202FADFF00147FBA /* MenuTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableSection.swift; sourceTree = "<group>"; };
 		15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
@@ -109,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B7F54420311B2800CE06B0 /* CoreLocation.framework in Frameworks */,
 				AEE667D9DE05B8D7A4F9EA8B /* Pods_YumQuest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +152,8 @@
 				1547A71C1FE663DC00FA25E2 /* NearbyLocationsVC.swift */,
 				157A56AB201A7F9100F60F4F /* RestaurantDetailsVC.swift */,
 				15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */,
+				15B7F54120311A5500CE06B0 /* MapVC.swift */,
+				15340D18203D02DB008ADECC /* ItemDetailsVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,6 +161,7 @@
 		157179D71FE211E800C5A167 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				15C45AC92033CB7F00050FED /* filter.png */,
 				15C5F17820279AD500E241DB /* restaurant_menu.svg.png */,
 				154A67B720268C7300E1ED6D /* menuToggle.png */,
 				157179DD1FE2155600C5A167 /* password.png */,
@@ -182,6 +196,9 @@
 		15A071361FE2097E003DE1E0 /* YumQuest */ = {
 			isa = PBXGroup;
 			children = (
+				15B7F545203121D200CE06B0 /* VenueLocale */,
+				15B7F540203116A900CE06B0 /* CollapsibleTableCell */,
+				15B7F53F2031167A00CE06B0 /* API Structs */,
 				15A286FC1FE8C91D00176825 /* Controller */,
 				15A286FB1FE8C91300176825 /* Model */,
 				1547A7131FE637A300FA25E2 /* View */,
@@ -219,12 +236,7 @@
 		15A286FB1FE8C91300176825 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				15A287011FE8E0E000176825 /* SearchVenueResponse.swift */,
-				15A287031FE8E13A00176825 /* Menu.swift */,
-				151A74E620126FC7008DAECE /* DetailFoodVenue.swift */,
 				154A67B5202659A400E1ED6D /* FBUserCache.swift */,
-				15C5FE20202FADFF00147FBA /* MenuTableSection.swift */,
-				15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */,
 				15576EE92031054300FE0C24 /* GetNearbyVenues.swift */,
 			);
 			path = Model;
@@ -237,6 +249,33 @@
 				15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		15B7F53F2031167A00CE06B0 /* API Structs */ = {
+			isa = PBXGroup;
+			children = (
+				15A287011FE8E0E000176825 /* SearchVenueResponse.swift */,
+				15A287031FE8E13A00176825 /* Menu.swift */,
+				151A74E620126FC7008DAECE /* DetailFoodVenue.swift */,
+			);
+			path = "API Structs";
+			sourceTree = "<group>";
+		};
+		15B7F540203116A900CE06B0 /* CollapsibleTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */,
+				15C5FE20202FADFF00147FBA /* MenuTableSection.swift */,
+			);
+			path = CollapsibleTableCell;
+			sourceTree = "<group>";
+		};
+		15B7F545203121D200CE06B0 /* VenueLocale */ = {
+			isa = PBXGroup;
+			children = (
+				15B7F546203121E800CE06B0 /* VenueLocale.swift */,
+			);
+			path = VenueLocale;
 			sourceTree = "<group>";
 		};
 		5990E0B19EA164A03A5EADBA /* Pods */ = {
@@ -255,6 +294,7 @@
 		D2C38ADB7AFAC809A9495478 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15B7F54320311B2800CE06B0 /* CoreLocation.framework */,
 				D44FCAA2FCD4FC2E0166BA09 /* Pods_YumQuest.framework */,
 				2167FECF20742585693E181E /* Pods_YumQuestTests.framework */,
 				75DF8FD631DD8DAE96C2E26D /* Pods_YumQuestUITests.framework */,
@@ -390,6 +430,7 @@
 				157179DE1FE2155700C5A167 /* account.png in Resources */,
 				15C5F17920279AD600E241DB /* restaurant_menu.svg.png in Resources */,
 				157179DF1FE2155700C5A167 /* password.png in Resources */,
+				15C45ACA2033CB7F00050FED /* filter.png in Resources */,
 				15A071421FE2097E003DE1E0 /* Assets.xcassets in Resources */,
 				15A0713D1FE2097E003DE1E0 /* Main.storyboard in Resources */,
 			);
@@ -556,6 +597,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GeoFire/GeoFire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -570,6 +612,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoFire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -593,7 +636,9 @@
 				154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */,
 				15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */,
 				151A74E720126FC7008DAECE /* DetailFoodVenue.swift in Sources */,
+				15B7F54220311A5500CE06B0 /* MapVC.swift in Sources */,
 				15A287041FE8E13A00176825 /* Menu.swift in Sources */,
+				15B7F547203121E800CE06B0 /* VenueLocale.swift in Sources */,
 				1528D2291FED88A500007802 /* VenueInfoTVC.swift in Sources */,
 				15A071401FE2097E003DE1E0 /* YumQuest.xcdatamodeld in Sources */,
 				15A0713A1FE2097E003DE1E0 /* LogInVC.swift in Sources */,
@@ -601,6 +646,7 @@
 				1547A71D1FE663DC00FA25E2 /* NearbyLocationsVC.swift in Sources */,
 				15C5FE23202FAEAF00147FBA /* ExpandableHeaderView.swift in Sources */,
 				15576EEA2031054300FE0C24 /* GetNearbyVenues.swift in Sources */,
+				15340D19203D02DB008ADECC /* ItemDetailsVC.swift in Sources */,
 				15F18BA5202C0F73004BBFF7 /* MenuTVC.swift in Sources */,
 				15A071381FE2097E003DE1E0 /* AppDelegate.swift in Sources */,
 			);

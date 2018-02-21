@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import Firebase
 
 class DetailFoodVenue {
     let id : String
     var hasMenu:Bool?
     var menu : Menu?
+    // Firebase reference
+    var menuItemsRef: DatabaseReference  = Database.database().reference().child("MenuItems")
     
     // Foursquare API venue response
     var getDetailsOfVenueResponse : GetDetailsOfVenueResponse?
@@ -46,9 +49,10 @@ class DetailFoodVenue {
                 
                 struct LocationInfo : Decodable {
                     let address : String?
-                    let distance : Int?
                     let city: String?
                     let state: String?
+                    let lat: Double?
+                    let lng: Double?
                 }
                 
                 struct PriceInfo : Decodable {
@@ -91,6 +95,9 @@ class DetailFoodVenue {
                                 }
                             }
                             
+                            // In here I can use the lat and lon information to write to GeoFire
+                            
+                            
                             DispatchQueue.main.sync {
                                 self.getDetailsOfVenueResponse = venueDetailResponse
                                 NotificationCenter.default.post(name: .reload, object: nil)
@@ -108,7 +115,7 @@ class DetailFoodVenue {
         }
     }
 
-    private func getMenu(venueId : String){
+    private func getMenu(venueId : String) {
         if let foursquareGetMenuURL = URL(string: "https://api.foursquare.com/v2/venues/\(venueId)/menu?&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL&v=20180121"){
             
             URLSession.shared.dataTask(with: foursquareGetMenuURL) { (data, response, error) in
@@ -121,10 +128,14 @@ class DetailFoodVenue {
                     do {
                         self.menu = try JSONDecoder().decode(Menu.self, from: data)
                         
+                        // Firebase
+                        //self.menuItemsRef = try
+                        
                         if let menuResponse = self.menu {
                             print(self.getDetailsOfVenueResponse?.response.venue.name)
                             print(foursquareGetMenuURL)
                             
+                            // For testing purposes
                             //ITERATE THROUGH EVERY ITEM
                             if let itemArrOne = menuResponse.response.menu?.menus?.items{
                                 for item in itemArrOne {
@@ -132,6 +143,10 @@ class DetailFoodVenue {
                                         for item in itemArrTwo{
                                             if let itemArrThree = item.entries.items{
                                                 for item in itemArrThree {
+                                                    if let id = item.entryId{
+                                                        // Write the id to Firebase
+                                                        self.menuItemsRef.child(id).setValue(0.0)
+                                                    }
                                                     if let name = item.name{
                                                         print(name)
                                                     }

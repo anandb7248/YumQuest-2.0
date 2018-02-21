@@ -4,7 +4,6 @@
 //
 //  Created by Anand Batjargal on 2/11/18.
 //  Copyright © 2018 AnandBatjargal. All rights reserved.
-//
 
 import Foundation
 import CoreLocation
@@ -12,6 +11,7 @@ import CoreLocation
 class GetNearbyVenuesHelper{
     var searchForVenuesResponse:SearchForVenuesResponse?
     var venues:[DetailFoodVenue]?
+    var venuesWithMenu:[DetailFoodVenue]?
     
     init(latitude: CLLocationDegrees?, longitude: CLLocationDegrees?){
         guard let lat = latitude, let lon = longitude
@@ -40,6 +40,7 @@ class GetNearbyVenuesHelper{
                             print("Json response failed")
                             return
                         }
+                        
                         var tempVenues:[DetailFoodVenue] = []
                         for venue in responseVenues.response.venues {
                             //print(venue.name)
@@ -47,12 +48,25 @@ class GetNearbyVenuesHelper{
                             //print(venue.id)
                             //tempVenues.append(DetailFoodVenue(venueId: venue.id))
                             tempVenues.append(DetailFoodVenue(venueId: venue.id))
-                            //self.tableView.reloadData()
                         }
                         
-                        DispatchQueue.main.async{
+                        DispatchQueue.main.sync{
                             self.searchForVenuesResponse = responseVenues
                             self.venues = tempVenues
+                            // At this point in the program, tempVenues is empty
+                            var tempVenuesWithMenu:[DetailFoodVenue] = []
+                            for receivedVenue in self.venues! {
+                                if let hasMenu = receivedVenue.hasMenu{
+                                    if hasMenu{
+                                        print("HAS MENU")
+                                        tempVenuesWithMenu.append(receivedVenue)
+                                    }
+                                }else{
+                                    print("DOES NOT HAVE MENU")
+                                }
+                            }
+
+                            self.venuesWithMenu = tempVenuesWithMenu
                         }
                     }
                 }

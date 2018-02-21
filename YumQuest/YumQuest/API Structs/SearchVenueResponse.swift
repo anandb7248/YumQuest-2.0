@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 
 struct SearchForVenuesResponse : Decodable{
     let meta: Meta
     let response: Response
@@ -22,19 +23,19 @@ struct SearchForVenuesResponse : Decodable{
         struct SearchVenue:Decodable {
             let id: String      // To be used to further obtain more information on the venue
             let name: String
-            //let location: Location
-            
             /*
-             class Location: Decodable{
-             let address:String
-             let lat:Double
-             let lng:Double
-             let distance: Int
-             let city:String
-             let state:String
-             let country:String
+            let location: Location
+            
+             struct Location: Decodable{
+                 let address:String
+                 let lat:Double
+                 let lng:Double
+                 let distance: Int
+                 let city:String
+                 let state:String
+                 let country:String
              }
-             */
+            */
         }
     }
 }

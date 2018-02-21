@@ -106,12 +106,8 @@ extension AppInvite.PromoCode {
       validCharacters.contains(UnicodeScalar(UInt16($0.value))!)
     }
 
-    let substr = String(cleaned)
-    if substr.characters.count > 10 {
-        let endIndex = substr.index(substr.startIndex, offsetBy: 9)
-        return String(substr[substr.startIndex...endIndex])
-    } else {
-        return substr
-    }
+    let range = 0 ..< min(10, cleaned.count)
+    let characters = cleaned[range].map(Character.init)
+    return String(characters)
   }
 }

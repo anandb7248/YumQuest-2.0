@@ -14,12 +14,14 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     let locationManager = CLLocationManager()
     var currentLat:CLLocationDegrees?
     var currentLon:CLLocationDegrees?
+    // filter flag - to filter table entries with menu's
+    var filter:Bool = false
     
     // Foursquare API venue response
     var nearbyVenues:GetNearbyVenuesHelper?
+    var venuesWithMenus = [DetailFoodVenue]()
     //var searchForVenuesResponse:SearchForVenuesResponse?
     //var venues:[DetailFoodVenue]?
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -29,6 +31,9 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: .reload, object: nil)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         getUsersCurrentCoordinates()
+        
+        // Fill up the array venuesWithMenus
+        //filterVenuesWithMenus()
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,6 +44,23 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     @objc func reloadTableData(_ notification: Notification) {
         tableView.reloadData()
     }
+    
+    /*
+    // Fills venuesWithMenu's array
+    func filterVenuesWithMenus(){
+        if let nearbyVenues = nearbyVenues{
+            if let venues = nearbyVenues.venues{
+                for venue in venues {
+                    if let hasMenu = venue.hasMenu{
+                        if hasMenu{
+                            venuesWithMenus.append(venue)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    */
     
     // HIDE NAVIGATION BAR
     override func viewWillAppear(_ animated: Bool) {
@@ -57,50 +79,122 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     // HIDE NAVIGATION BAR
     
     // TOGGLE VENUES WITH MENUS
-    
-    // TOGGLE VENUES WITH MENUS
+    @IBAction func filterTablePressed(_ sender: Any) {
+        filter = !filter
+        // TEST
+        if filter{
+            print("FILTER TRUE")
+            venuesWithMenus = [DetailFoodVenue]()
+            // Fill the venuesWithTable array
+            if let venues = nearbyVenues?.venues{
+                for venue in venues{
+                    if let hasMenu = venue.hasMenu{
+                        if hasMenu{
+                            venuesWithMenus.append(venue)
+                            // Print count of the array
+                            print("COUNT OF VENUES WITH MENU IN FILTERTABLEPRESSED()")
+                            print(venuesWithMenus.count)
+                            tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }else{
+            print("FILTER FALSE")
+        }
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let ven = nearbyVenues?.venues {
-            return ven.count
+        if filter{
+            /*
+            if let ven = nearbyVenues?.venuesWithMenu {
+                print("VENUE WITH MENUS COUNT")
+                print(ven.count)
+                return ven.count
+            }else{
+                return 0
+            }
+            */
+            return venuesWithMenus.count
         }else{
-            return 0
+            if let ven = nearbyVenues?.venues {
+                print("VENUES COUNT")
+                print(ven.count)
+                return ven.count
+            }else{
+                return 0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueInfoTVC", for: indexPath) as! VenueInfoTVC
         
-        // check if venues has values first.
-        if let venues = nearbyVenues?.venues {
-            if let restaurant = venues[indexPath.row].getDetailsOfVenueResponse?.response.venue {
-                cell.nameLabel.text = restaurant.name
-                cell.ratingLabel.text = getFormattedRating(ratingDouble: restaurant.rating)
-                cell.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
-                cell.categoryLabel.text = restaurant.categories[0].name
-                cell.pricetierLabel.text = restaurant.price.currency
-                if let address = restaurant.location.address {
-                    if let city = restaurant.location.city {
-                        if let state = restaurant.location.state {
-                            cell.addressLabel.text = address + ", " + city + ", " + state
+        if filter{
+            let venues = venuesWithMenus
+                if let restaurant = venues[indexPath.row].getDetailsOfVenueResponse?.response.venue {
+                    cell.nameLabel.text = restaurant.name
+                    cell.ratingLabel.text = getFormattedRating(ratingDouble: restaurant.rating)
+                    cell.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
+                    cell.categoryLabel.text = restaurant.categories[0].name
+                    cell.pricetierLabel.text = restaurant.price.currency
+                    if let address = restaurant.location.address {
+                        if let city = restaurant.location.city {
+                            if let state = restaurant.location.state {
+                                cell.addressLabel.text = address + ", " + city + ", " + state
+                            }else{
+                                cell.addressLabel.text = address + ", " + city
+                            }
                         }else{
-                            cell.addressLabel.text = address + ", " + city
+                            cell.addressLabel.text = address
                         }
                     }else{
-                        cell.addressLabel.text = address
+                        cell.addressLabel.text = "Address Unknown"
                     }
-                }else{
-                    cell.addressLabel.text = "Address Unknown"
-                }
-                
-                if let hasMenu = venues[indexPath.row].hasMenu {
-                    if hasMenu {
-                        cell.hasMenuIndicator.isHidden = false
+                    
+                    if let hasMenu = venues[indexPath.row].hasMenu {
+                        if hasMenu {
+                            cell.hasMenuIndicator.isHidden = false
+                        }else{
+                            cell.hasMenuIndicator.isHidden = true
+                        }
                     }else{
                         cell.hasMenuIndicator.isHidden = true
                     }
-                }else{
-                    cell.hasMenuIndicator.isHidden = true
+                }
+        }else{
+            // Check if venues has values first.
+            if let venues = nearbyVenues?.venues {
+                if let restaurant = venues[indexPath.row].getDetailsOfVenueResponse?.response.venue {
+                    cell.nameLabel.text = restaurant.name
+                    cell.ratingLabel.text = getFormattedRating(ratingDouble: restaurant.rating)
+                    cell.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
+                    cell.categoryLabel.text = restaurant.categories[0].name
+                    cell.pricetierLabel.text = restaurant.price.currency
+                    if let address = restaurant.location.address {
+                        if let city = restaurant.location.city {
+                            if let state = restaurant.location.state {
+                                cell.addressLabel.text = address + ", " + city + ", " + state
+                            }else{
+                                cell.addressLabel.text = address + ", " + city
+                            }
+                        }else{
+                            cell.addressLabel.text = address
+                        }
+                    }else{
+                        cell.addressLabel.text = "Address Unknown"
+                    }
+                    
+                    if let hasMenu = venues[indexPath.row].hasMenu {
+                        if hasMenu {
+                            cell.hasMenuIndicator.isHidden = false
+                        }else{
+                            cell.hasMenuIndicator.isHidden = true
+                        }
+                    }else{
+                        cell.hasMenuIndicator.isHidden = true
+                    }
                 }
             }
         }
@@ -269,8 +363,13 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showRestaurantDetails"){
             let destVC = segue.destination as! RestaurantDetailsVC
-            //destVC.detailFoodVenue = venues?[(tableView.indexPathForSelectedRow?.row)!]
-            destVC.detailFoodVenue = nearbyVenues?.venues![(tableView.indexPathForSelectedRow?.row)!]
+            
+            if filter{
+                destVC.detailFoodVenue = venuesWithMenus[(tableView.indexPathForSelectedRow?.row)!]
+            }else{
+                //destVC.detailFoodVenue = venues?[(tableView.indexPathForSelectedRow?.row)!]
+                destVC.detailFoodVenue = nearbyVenues?.venues![(tableView.indexPathForSelectedRow?.row)!]
+            }
         }
     }
 }
