@@ -24,8 +24,6 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.30.0):
     - FBSDKCoreKit (~> 4.30.0)
-  - Firebase (4.9.0):
-    - Firebase/Core (= 4.9.0)
   - Firebase/Auth (4.9.0):
     - Firebase/Core
     - FirebaseAuth (= 4.4.3)
@@ -52,8 +50,6 @@ PODS:
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.9):
     - FirebaseCore (~> 4.0)
-  - GeoFire (2.0.1):
-    - Firebase/Database (~> 4.0)
   - GoogleToolboxForMac/DebugUtils (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
@@ -64,7 +60,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
-  - GTMSessionFetcher/Core (1.1.13)
+  - GTMSessionFetcher/Core (1.1.14)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -76,25 +72,17 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare (from `https://github.com/1amageek/facebook-sdk-swift`)
-  - Firebase
   - Firebase/Auth
-  - Firebase/Core
   - Firebase/Database
-  - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
 
 EXTERNAL SOURCES:
   FacebookShare:
     :git: https://github.com/1amageek/facebook-sdk-swift
-  GeoFire:
-    :git: https://github.com/firebase/geofire-objc.git
 
 CHECKOUT OPTIONS:
   FacebookShare:
     :commit: 3ac76c770e9849285c380f380309d866911d2e93
     :git: https://github.com/1amageek/facebook-sdk-swift
-  GeoFire:
-    :commit: 257b6ceb6dd124bf3fc45c70c0c08367ef6080d3
-    :git: https://github.com/firebase/geofire-objc.git
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -110,12 +98,11 @@ SPEC CHECKSUMS:
   FirebaseCore: 3bd047463058fa6b5d312c97502c52e45401cdfb
   FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
   FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
-  GeoFire: 3e70a24019dc16816190f533c9cac0d1321c4a71
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
+  GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 157c3c9cafb1963cc0eabc4c305655b4d447c538
+PODFILE CHECKSUM: 2b099e11bf8dfcf821840126bd43ea7fbf235bfb
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0

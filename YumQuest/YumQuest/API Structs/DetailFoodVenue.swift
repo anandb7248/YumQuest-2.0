@@ -65,8 +65,8 @@ class DetailFoodVenue {
             }
         }
     }
-    // Part of API Request
     
+    // Part of API Request
     init(venueId : String){
         id = venueId
         // Do an API call to fill the class's information

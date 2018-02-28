@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '93EA7CE63B4441FA578108118851EE4A'
-               BlueprintName = 'FacebookShare'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'FacebookShare.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A7FEAA14E89971698ACA148F7F7202F2"
+               BlueprintName = "FacebookShare"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "FacebookShare.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -105,9 +105,19 @@ extension AppInvite.PromoCode {
     let cleaned = string.unicodeScalars.filter {
       validCharacters.contains(UnicodeScalar(UInt16($0.value))!)
     }
-
+    /* This block resulted in a Build Failure
+     Used the following as reference to use as an alternative:
+     http://kristofk.com/facebook-swift-sdk-updated-to-swift-4/
     let range = 0 ..< min(10, cleaned.count)
     let characters = cleaned[range].map(Character.init)
     return String(characters)
+    */
+    let substr = String(cleaned)
+    if substr.characters.count > 10 {
+        let endIndex = substr.index(substr.startIndex, offsetBy: 9)
+        return String(substr[substr.startIndex...endIndex])
+    } else {
+        return substr
+    }
   }
 }
