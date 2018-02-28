@@ -83,7 +83,6 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         filter = !filter
         // TEST
         if filter{
-            print("FILTER TRUE")
             venuesWithMenus = [DetailFoodVenue]()
             // Fill the venuesWithTable array
             if let venues = nearbyVenues?.venues{
@@ -91,9 +90,6 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
                     if let hasMenu = venue.hasMenu{
                         if hasMenu{
                             venuesWithMenus.append(venue)
-                            // Print count of the array
-                            print("COUNT OF VENUES WITH MENU IN FILTERTABLEPRESSED()")
-                            print(venuesWithMenus.count)
                             tableView.reloadData()
                         }
                     }
@@ -119,8 +115,6 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
             return venuesWithMenus.count
         }else{
             if let ven = nearbyVenues?.venues {
-                print("VENUES COUNT")
-                print(ven.count)
                 return ven.count
             }else{
                 return 0

@@ -58,11 +58,8 @@ class GetNearbyVenuesHelper{
                             for receivedVenue in self.venues! {
                                 if let hasMenu = receivedVenue.hasMenu{
                                     if hasMenu{
-                                        print("HAS MENU")
                                         tempVenuesWithMenu.append(receivedVenue)
                                     }
-                                }else{
-                                    print("DOES NOT HAVE MENU")
                                 }
                             }
 

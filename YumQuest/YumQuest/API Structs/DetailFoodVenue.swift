@@ -8,8 +8,9 @@
 
 import Foundation
 import Firebase
+import MapKit
 
-class DetailFoodVenue {
+class DetailFoodVenue{
     let id : String
     var hasMenu:Bool?
     var menu : Menu?
@@ -18,7 +19,7 @@ class DetailFoodVenue {
     
     // Foursquare API venue response
     var getDetailsOfVenueResponse : GetDetailsOfVenueResponse?
-    
+        
     // Part of API Request
     struct GetDetailsOfVenueResponse : Decodable {
         let meta: Meta
@@ -114,7 +115,7 @@ class DetailFoodVenue {
             print("Error: Using id - \(id) to obtain GetDetailsOfVenue Request has failed")
         }
     }
-
+    
     private func getMenu(venueId : String) {
         if let foursquareGetMenuURL = URL(string: "https://api.foursquare.com/v2/venues/\(venueId)/menu?&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL&v=20180121"){
             
@@ -132,11 +133,12 @@ class DetailFoodVenue {
                         //self.menuItemsRef = try
                         
                         if let menuResponse = self.menu {
-                            print(self.getDetailsOfVenueResponse?.response.venue.name)
-                            print(foursquareGetMenuURL)
+                            //print(self.getDetailsOfVenueResponse?.response.venue.name ?? "N/A")
+                            //print(foursquareGetMenuURL)
                             
                             // For testing purposes
                             //ITERATE THROUGH EVERY ITEM
+                            /*
                             if let itemArrOne = menuResponse.response.menu?.menus?.items{
                                 for item in itemArrOne {
                                     if let itemArrTwo = item.entries?.items{
@@ -159,6 +161,7 @@ class DetailFoodVenue {
                                     }
                                 }
                             }
+                            */
                             if let count = menuResponse.response.menu?.menus?.count{
                                 if count > 0 {
                                     self.hasMenu = true
