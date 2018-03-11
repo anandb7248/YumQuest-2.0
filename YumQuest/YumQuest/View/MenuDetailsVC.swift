@@ -26,6 +26,9 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // To reload the table in a different view controller
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
@@ -54,12 +57,17 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
+    
+    @objc func loadList(){
+        //load data here
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
@@ -82,23 +90,17 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         //cell.ratingLabel.text =
         let id = sections[indexPath.section].menuItems[indexPath.row].entryId
         
-        /*
-        menuItemsRef.child(id!).observeSingleEvent(of: .value, with: {(snapshot) in
-            //let value = snapshot.value
-            
-            cell.ratingLabel.text = value
-         })
-        */
         menuItemsRef.child(id!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let value = snapshot.value as? Double?{
-                if value! == 0.0 {
+            let value = snapshot.value as! [String:AnyObject]
+            let rating = value["Rating"] as! Double
+
+                if rating == 0.0 {
                     cell.ratingLabel.text = "NA"
-                }else if value == 10.0{
+                }else if rating == 10.0 {
                     cell.ratingLabel.text = "10"
                 }else{
-                    cell.ratingLabel.text = String(format:"%.1f", value!)
+                    cell.ratingLabel.text = String(format:"%.1f",rating)
                 }
-            }
         })
         
         // Fill the menu item rating here

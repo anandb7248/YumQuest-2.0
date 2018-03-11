@@ -935,7 +935,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X.X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGd-nw-iT6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGd-nw-iT6">
                                 <rect key="frame" x="155" y="334" width="65" height="65"/>
                                 <color key="backgroundColor" red="1" green="0.52769760450000003" blue="0.30977469549999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -953,11 +953,12 @@
                                     <constraint firstAttribute="height" constant="37" id="3fN-gz-LTi"/>
                                     <constraint firstAttribute="width" constant="175" id="gRP-Zr-xI0"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Review">
                                     <color key="titleColor" red="0.92086373730000004" green="0.62228382289999995" blue="0.2672160818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="viewMenuPressed:" destination="nNn-Rw-VFN" eventType="touchUpInside" id="fny-G4-bEJ"/>
+                                    <segue destination="NIP-yg-NSx" kind="show" identifier="rateItem" id="KxG-ef-eM4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x,xxx,xxxx Reviews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duj-Pq-5aC">
@@ -1327,7 +1328,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X.X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzl-kt-MRN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzl-kt-MRN">
                                 <rect key="frame" x="155" y="334" width="65" height="65"/>
                                 <color key="backgroundColor" red="1" green="0.52769760450000003" blue="0.30977469549999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -1409,6 +1410,103 @@
                 <exit id="kaM-jo-jfO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3894" y="231"/>
+        </scene>
+        <!--Review Item-->
+        <scene sceneID="VmY-kl-Ih0">
+            <objects>
+                <viewController title="Review Item" id="NIP-yg-NSx" customClass="ReviewItemVC" customModule="YumQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N8P-bV-nqf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl1-J7-XHY">
+                                <rect key="frame" x="16" y="85" width="343" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="2Va-NU-uDr"/>
+                                    <constraint firstAttribute="width" constant="343" id="sbB-sW-dy1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URb-7G-0lm">
+                                <rect key="frame" x="16" y="118" width="343" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="vNI-3T-KaJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jB-B1-aR8">
+                                <rect key="frame" x="16" y="148" width="343" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="3nT-1w-yhZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdM-ge-zzM">
+                                <rect key="frame" x="16" y="172" width="343" height="80"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="F3W-AY-xKE"/>
+                                    <constraint firstAttribute="height" constant="80" id="U4u-nP-LOU"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="NIP-yg-NSx" id="vY7-74-MEu"/>
+                                    <outlet property="delegate" destination="NIP-yg-NSx" id="RNq-vF-iOx"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSH-ls-phN">
+                                <rect key="frame" x="100" y="573" width="175" height="37"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="GFG-Ip-dcA"/>
+                                    <constraint firstAttribute="width" constant="175" id="Gau-Qx-rhK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Submit Review">
+                                    <color key="titleColor" red="0.92086373730000004" green="0.62228382289999995" blue="0.2672160818" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitReview:" destination="NIP-yg-NSx" eventType="touchUpInside" id="B52-Nv-Juk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92130309340000005" green="0.6205775738" blue="0.26654553409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="MdM-ge-zzM" firstAttribute="top" secondItem="0jB-B1-aR8" secondAttribute="bottom" constant="8" id="15R-wj-pE0"/>
+                            <constraint firstItem="Kl1-J7-XHY" firstAttribute="leading" secondItem="N8P-bV-nqf" secondAttribute="leading" constant="16" id="1iF-Op-753"/>
+                            <constraint firstItem="0jB-B1-aR8" firstAttribute="top" secondItem="URb-7G-0lm" secondAttribute="bottom" constant="8" id="4Xb-cV-6Ij"/>
+                            <constraint firstItem="MdM-ge-zzM" firstAttribute="centerX" secondItem="WSD-EE-OJQ" secondAttribute="centerX" id="94K-HT-ogj"/>
+                            <constraint firstItem="Kl1-J7-XHY" firstAttribute="top" secondItem="N8P-bV-nqf" secondAttribute="top" constant="85" id="Spf-1G-5h6"/>
+                            <constraint firstAttribute="trailing" secondItem="Kl1-J7-XHY" secondAttribute="trailing" constant="16" id="bjZ-2J-bX6"/>
+                            <constraint firstItem="rSH-ls-phN" firstAttribute="centerX" secondItem="WSD-EE-OJQ" secondAttribute="centerX" id="dfm-7m-KKe"/>
+                            <constraint firstItem="WSD-EE-OJQ" firstAttribute="trailing" secondItem="URb-7G-0lm" secondAttribute="trailing" constant="16" id="mIR-n6-Yg9"/>
+                            <constraint firstItem="URb-7G-0lm" firstAttribute="top" secondItem="Kl1-J7-XHY" secondAttribute="bottom" constant="-2" id="reo-bu-byd"/>
+                            <constraint firstItem="URb-7G-0lm" firstAttribute="leading" secondItem="WSD-EE-OJQ" secondAttribute="leading" constant="16" id="s9Z-Ab-5wG"/>
+                            <constraint firstItem="WSD-EE-OJQ" firstAttribute="bottom" secondItem="rSH-ls-phN" secondAttribute="bottom" constant="8" id="tt6-ya-jr3"/>
+                            <constraint firstItem="0jB-B1-aR8" firstAttribute="centerX" secondItem="WSD-EE-OJQ" secondAttribute="centerX" id="zpH-cB-fzf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WSD-EE-OJQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="accountTabItem" id="vW2-P4-quA">
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="itemNameLabel" destination="URb-7G-0lm" id="2qy-wD-NDs"/>
+                        <outlet property="ratingPicker" destination="MdM-ge-zzM" id="6ce-Lg-QVn"/>
+                        <outlet property="venueNameLabel" destination="Kl1-J7-XHY" id="Org-J6-Tiv"/>
+                        <segue destination="V7N-0m-tJH" kind="unwind" identifier="goToLogIn" unwindAction="unwindToLogInSegue:" id="hOU-vB-msz"/>
+                        <segue destination="V7N-0m-tJH" kind="unwind" identifier="unwindToItemDetails" unwindAction="unwindToItemDetailsWithSegue:" id="FX4-ND-Poh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fCX-X7-fOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="V7N-0m-tJH" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4712.8000000000002" y="-510.49475262368821"/>
         </scene>
     </scenes>
     <resources>

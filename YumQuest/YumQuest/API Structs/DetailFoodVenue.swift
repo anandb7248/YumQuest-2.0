@@ -138,7 +138,7 @@ class DetailFoodVenue{
                             
                             // For testing purposes
                             //ITERATE THROUGH EVERY ITEM
-                            /*
+                            
                             if let itemArrOne = menuResponse.response.menu?.menus?.items{
                                 for item in itemArrOne {
                                     if let itemArrTwo = item.entries?.items{
@@ -147,7 +147,7 @@ class DetailFoodVenue{
                                                 for item in itemArrThree {
                                                     if let id = item.entryId{
                                                         // Write the id to Firebase
-                                                        self.menuItemsRef.child(id).setValue(0.0)
+                                                        self.menuItemsRef.child(id).setValue(["NumberOfRatings" : 0, "TotalRatings": 0, "Rating":0.0])
                                                     }
                                                     if let name = item.name{
                                                         print(name)
@@ -161,7 +161,7 @@ class DetailFoodVenue{
                                     }
                                 }
                             }
-                            */
+                            
                             if let count = menuResponse.response.menu?.menus?.count{
                                 if count > 0 {
                                     self.hasMenu = true

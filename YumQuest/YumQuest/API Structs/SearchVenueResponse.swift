@@ -8,7 +8,6 @@
 
 import Foundation
 
-// 
 struct SearchForVenuesResponse : Decodable{
     let meta: Meta
     let response: Response

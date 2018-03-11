@@ -9,7 +9,6 @@
 import UIKit
 
 class RestaurantDetailsVC: UIViewController {
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!

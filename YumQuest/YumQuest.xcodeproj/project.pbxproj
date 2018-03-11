@@ -37,6 +37,7 @@
 		15C5F17920279AD600E241DB /* restaurant_menu.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 15C5F17820279AD500E241DB /* restaurant_menu.svg.png */; };
 		15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5FE20202FADFF00147FBA /* MenuTableSection.swift */; };
 		15C5FE23202FAEAF00147FBA /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */; };
+		15E387582054696E00E543BE /* ReviewItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E387572054696E00E543BE /* ReviewItemVC.swift */; };
 		15F18BA3202C0EE7004BBFF7 /* MenuDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */; };
 		15F18BA5202C0F73004BBFF7 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */; };
 		15F1DDB01FE25EB700DFE026 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15F1DDAF1FE25EB700DFE026 /* GoogleService-Info.plist */; };
@@ -101,6 +102,7 @@
 		15C5F17820279AD500E241DB /* restaurant_menu.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_menu.svg.png; sourceTree = "<group>"; };
 		15C5FE20202FADFF00147FBA /* MenuTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableSection.swift; sourceTree = "<group>"; };
 		15C5FE22202FAEAF00147FBA /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		15E387572054696E00E543BE /* ReviewItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemVC.swift; sourceTree = "<group>"; };
 		15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailsVC.swift; sourceTree = "<group>"; };
 		15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
 		15F1DDAF1FE25EB700DFE026 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				15F18BA2202C0EE7004BBFF7 /* MenuDetailsVC.swift */,
 				15B7F54120311A5500CE06B0 /* MapVC.swift */,
 				15340D18203D02DB008ADECC /* ItemDetailsVC.swift */,
+				15E387572054696E00E543BE /* ReviewItemVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */,
 				15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */,
 				151A74E720126FC7008DAECE /* DetailFoodVenue.swift in Sources */,
+				15E387582054696E00E543BE /* ReviewItemVC.swift in Sources */,
 				15B7F54220311A5500CE06B0 /* MapVC.swift in Sources */,
 				15A287041FE8E13A00176825 /* Menu.swift in Sources */,
 				15B7F547203121E800CE06B0 /* VenueLocale.swift in Sources */,
