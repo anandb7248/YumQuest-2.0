@@ -1008,6 +1008,7 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="SHR-1D-GrO" id="wHc-GP-ptu"/>
                         <outlet property="itemNameLabel" destination="EHr-3K-GJZ" id="EdZ-Ci-c3b"/>
+                        <outlet property="numberOfReviewsLabel" destination="duj-Pq-5aC" id="ZUo-tp-Upa"/>
                         <outlet property="priceLabel" destination="SvO-Wd-zVk" id="7Ek-hG-yP9"/>
                         <outlet property="ratingLabel" destination="dGd-nw-iT6" id="WQI-Lq-VMI"/>
                         <outlet property="venueNameLabel" destination="HfL-yf-SIs" id="3eG-lh-WsC"/>

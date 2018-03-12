@@ -19,6 +19,7 @@ class ItemDetailsVC: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var numberOfReviewsLabel: UILabel!
     
     var ref:DatabaseReference? = Database.database().reference().child("MenuItems")
     
@@ -38,6 +39,9 @@ class ItemDetailsVC: UIViewController {
             ref?.child(item.entryId!).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as! [String : AnyObject]
                 let rating = value["Rating"] as! Double
+                let numberOfReviews = value["NumberOfRatings"] as! Int
+                
+                self.numberOfReviewsLabel.text = String(numberOfReviews) + " Reviews"
                 
                 if rating == 0.0 {
                     self.ratingLabel.text = "NA"
