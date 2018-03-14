@@ -15,7 +15,7 @@ class DetailFoodVenue{
     var hasMenu:Bool?
     var menu : Menu?
     // Firebase reference
-    var menuItemsRef: DatabaseReference  = Database.database().reference().child("MenuItems")
+    var menuItemsRef: DatabaseReference  = Database.database().reference().child("ItemRatings")
     
     // Foursquare API venue response
     var getDetailsOfVenueResponse : GetDetailsOfVenueResponse?
@@ -146,8 +146,27 @@ class DetailFoodVenue{
                                             if let itemArrThree = item.entries.items{
                                                 for item in itemArrThree {
                                                     if let id = item.entryId{
-                                                        // Write the id to Firebase
-                                                        self.menuItemsRef.child(id).setValue(["NumberOfRatings" : 0, "TotalRatings": 0, "Rating":0.0])
+                                                        self.menuItemsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+                                                            if !snapshot.hasChild(id){
+                                                                                                                self.menuItemsRef.child(id).setValue(["NumberOfRatings" : 0, "TotalRatings": 0, "Rating":0.0])
+                                                            }
+                                                        })
+                                                        /*
+                                                         ref.child("rooms").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                                                         
+                                                         if snapshot.hasChild("room1"){
+                                                         
+                                                         print("true rooms exist")
+                                                         
+                                                         }else{
+                                                         
+                                                         print("false room doesn't exist")
+                                                         }
+                                                         
+                                                         
+                                                         })
+                                                        */
                                                     }
                                                     if let name = item.name{
                                                         print(name)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150CE84B20572E71007FE35A /* ReviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CE84A20572E71007FE35A /* ReviewTVC.swift */; };
 		151A74E720126FC7008DAECE /* DetailFoodVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A74E620126FC7008DAECE /* DetailFoodVenue.swift */; };
 		1528D2291FED88A500007802 /* VenueInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1528D2281FED88A500007802 /* VenueInfoTVC.swift */; };
 		15340D19203D02DB008ADECC /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15340D18203D02DB008ADECC /* ItemDetailsVC.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150CE84A20572E71007FE35A /* ReviewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTVC.swift; sourceTree = "<group>"; };
 		151A74E620126FC7008DAECE /* DetailFoodVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodVenue.swift; sourceTree = "<group>"; };
 		1528D2281FED88A500007802 /* VenueInfoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueInfoTVC.swift; sourceTree = "<group>"; };
 		15340D18203D02DB008ADECC /* ItemDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				1528D2281FED88A500007802 /* VenueInfoTVC.swift */,
 				15F18BA4202C0F73004BBFF7 /* MenuTVC.swift */,
+				150CE84A20572E71007FE35A /* ReviewTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				157EA0901FE2E2CE00771E22 /* SignUpVC.swift in Sources */,
 				15F18BA3202C0EE7004BBFF7 /* MenuDetailsVC.swift in Sources */,
 				154A67B6202659A400E1ED6D /* FBUserCache.swift in Sources */,
+				150CE84B20572E71007FE35A /* ReviewTVC.swift in Sources */,
 				15C5FE21202FADFF00147FBA /* MenuTableSection.swift in Sources */,
 				151A74E720126FC7008DAECE /* DetailFoodVenue.swift in Sources */,
 				15E387582054696E00E543BE /* ReviewItemVC.swift in Sources */,

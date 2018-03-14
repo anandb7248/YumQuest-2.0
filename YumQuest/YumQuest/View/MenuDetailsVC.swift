@@ -21,7 +21,7 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     var sections = [MenuTableSection]()
     
-    var menuItemsRef: DatabaseReference  = Database.database().reference().child("MenuItems")
+    var menuItemsRef: DatabaseReference  = Database.database().reference().child("ItemRatings")
     
     override func viewDidLoad() {
         super.viewDidLoad()

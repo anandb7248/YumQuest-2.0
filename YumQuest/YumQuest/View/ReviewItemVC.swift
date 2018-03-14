@@ -9,21 +9,27 @@
 import UIKit
 import Firebase
 
-class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
     
     var name : String?
     var item : MenuItem?
     // Firebase reference
-    var itemRef : DatabaseReference = Database.database().reference().child("MenuItems")
+    var itemRatingsRef : DatabaseReference = Database.database().reference().child("ItemRatings")
+    var itemReviewsRef : DatabaseReference = Database.database().reference().child("ItemReviews")
 
     @IBOutlet weak var ratingPicker: UIPickerView!
     @IBOutlet weak var venueNameLabel: UILabel!
     @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var reviewTF: UITextField!
     
     let ratingOptions = ["1", "2", "3", "4", "5", "6","7","8","9","10"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Print item id
+        print("ITEM ID:")
+        print(item?.entryId!)
         
         if let name = name{
             venueNameLabel.text = name
@@ -32,6 +38,7 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             itemNameLabel.text = item.name
         }
         
+        self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,48 +71,44 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         return ratingOptions.count
     }
     
+    // Hide keyboard when return is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        reviewTF.resignFirstResponder()
+        return true
+    }
+
+    
     @IBAction func submitReview(_ sender: Any) {
-        var usersRating = Double(ratingPicker.selectedRow(inComponent: 0)) + 1.0
+        let usersRating = Double(ratingPicker.selectedRow(inComponent: 0)) + 1.0
         
-        itemRef.child((item?.entryId)!).observeSingleEvent(of: .value, with: { (snapshot) in
+        print("----------SubmitReviewPressed------------")
+        print(reviewTF.text!)
+        
+        // Write the review to the database
+        //itemReviewsRef.child((item?.entryId)!).setValue(reviewTF.text)
+        // Get the current authorized user's id
+        let userID = Auth.auth().currentUser?.uid
+        print(userID!)
+        // Append the user review to Firebase
+        itemReviewsRef.child((item?.entryId)!).child(userID!).setValue(reviewTF.text)
+        
+        itemRatingsRef.child((item?.entryId)!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as! [String : AnyObject]
             
             let curRating = value["Rating"] as! Double
             let curNumberOfRatings = value["NumberOfRatings"] as! Int
             let curTotalRatings = value["TotalRatings"] as! Int
-                
-            print(curRating)
-            print(curNumberOfRatings)
-            print(curTotalRatings)
-            //self.menuItemsRef.child(id).setValue(["NumberOfRatings" : 0, "TotalRatings": 0, "Rating":0.0])
+            
             if curRating == 0.0{
-                self.itemRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : 1, "TotalRatings": Int(usersRating), "Rating":usersRating])
+                self.itemRatingsRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : 1, "TotalRatings": Int(usersRating), "Rating":usersRating])
+                self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
             }else{
                 let newNumberOfRatings = curNumberOfRatings + 1
                 let newTotalRatings = Double(curTotalRatings) + usersRating
                 let newRating = newTotalRatings / Double(newNumberOfRatings)
-                self.itemRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : newNumberOfRatings, "TotalRatings": newTotalRatings, "Rating": newRating])
+                self.itemRatingsRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : newNumberOfRatings, "TotalRatings": newTotalRatings, "Rating": newRating])
+                self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
             }
-            
-            self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
-            // If a value exists that corresponds to the entryID key...
-            /*
-            if let previousRating = snapshot.value as? Double?{
-                
-                if previousRating == 0.0 {
-                    let editRef = self.itemRef.child((self.item?.entryId)!)
-                    
-                    //editRef.updateChildValues([(self.item?.entryId)!:usersRating])
-                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
-                }else{
-                    usersRating = (previousRating! + usersRating)/2
-                    //self.itemRef.updateChildValues([(self.item?.entryId)!: usersRating])
-                    let editRef = self.itemRef
-                    editRef.updateChildValues([(self.item?.entryId)!:usersRating])
-                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
-                }
-            }
-            */
         })
     }
 
@@ -120,5 +123,17 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             dest.reloadViewDidLoad()
         }
         
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
