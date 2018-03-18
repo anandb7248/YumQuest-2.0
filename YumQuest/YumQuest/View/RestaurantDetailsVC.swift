@@ -80,9 +80,22 @@ class RestaurantDetailsVC: UIViewController {
         //performSegue(withIdentifier: "showMenu", sender: nil)
     }
     
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showMenu"){
+            let destVC = segue.destination as! MenuDetailsVC
+            destVC.restaurantDetails = detailFoodVenue
+        }
+    }
+}
+
+extension UIViewController {
     func getFormattedRating(ratingDouble : Double?) -> String{
         if let rating = ratingDouble {
-            let ratingStr = String(Double(round(10*rating)/10))
+            let ratingStr = String(Double(round((10*rating)/2)/10))
             return ratingStr
         }else {
             return "NA"
@@ -114,15 +127,4 @@ class RestaurantDetailsVC: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showMenu"){
-            let destVC = segue.destination as! MenuDetailsVC
-            destVC.restaurantDetails = detailFoodVenue
-        }
-    }
 }
-

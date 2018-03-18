@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
-    // Location
+    // Location 
     let locationManager = CLLocationManager()
     var currentLat:CLLocationDegrees?
     var currentLon:CLLocationDegrees?
@@ -196,44 +196,6 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         return cell
     }
     //------------------
-    // START OF UTILITY FUNCTIONS
-    func getFormattedRating(ratingDouble : Double?) -> String{
-        if let rating = ratingDouble {
-            let ratingStr = String(Double(round(10*rating)/10))
-            return ratingStr
-        }else {
-            return "NA"
-        }
-    }
-    
-    func hexStringToUIColor (hex:String?) -> UIColor {
-        guard let hex = hex else {
-            return UIColor.white
-        }
-        
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-    
-    // END OF UTILITY FUNCTIONS
-    // -----------------
     
     // START Location functions
     func getUsersCurrentCoordinates(){
@@ -243,6 +205,7 @@ class NearbyLocationsVC: UIViewController, CLLocationManagerDelegate, UITableVie
         
         // One-time call to obtain the users current location. This calls the method locationManager(didUpdateLocations)
         locationManager.requestLocation()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

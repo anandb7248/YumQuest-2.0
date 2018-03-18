@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 
-class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
+class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
+                    UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var name : String?
     var item : MenuItem?
@@ -17,10 +18,12 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     var itemRatingsRef : DatabaseReference = Database.database().reference().child("ItemRatings")
     var itemReviewsRef : DatabaseReference = Database.database().reference().child("ItemReviews")
 
-    @IBOutlet weak var ratingPicker: UIPickerView!
+    @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var venueNameLabel: UILabel!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var reviewTF: UITextField!
+    @IBOutlet weak var addImage: UIImageView!
+    
     
     let ratingOptions = ["1", "2", "3", "4", "5", "6","7","8","9","10"]
     
@@ -44,6 +47,29 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Image
+    @IBAction func uploadPicturePressed(_ sender: Any) {
+        print("PRESSED")
+        
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = .photoLibrary
+        image.allowsEditing = false
+        
+        self.present(image, animated: true, completion: nil)
+    }
+    //https://www.youtube.com/watch?v=v8r_wD_P3B8
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            addImage.image = image
+        }else{
+            // Error message
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -79,9 +105,11 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
 
     
     @IBAction func submitReview(_ sender: Any) {
-        let usersRating = Double(ratingPicker.selectedRow(inComponent: 0)) + 1.0
+        //let usersRating = Double(ratingPicker.selectedRow(inComponent: 0)) + 1.0
+        let usersRating = Double(starRatingControl.rating)
         
         print("----------SubmitReviewPressed------------")
+        print(usersRating)
         print(reviewTF.text!)
         
         // Write the review to the database
@@ -102,11 +130,13 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             if curRating == 0.0{
                 self.itemRatingsRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : 1, "TotalRatings": Int(usersRating), "Rating":usersRating])
                 self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
+                print("HERE")
             }else{
                 let newNumberOfRatings = curNumberOfRatings + 1
                 let newTotalRatings = Double(curTotalRatings) + usersRating
                 let newRating = newTotalRatings / Double(newNumberOfRatings)
                 self.itemRatingsRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : newNumberOfRatings, "TotalRatings": newTotalRatings, "Rating": newRating])
+                print("HERE")
                 self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
             }
         })
