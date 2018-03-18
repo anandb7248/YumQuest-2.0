@@ -15,8 +15,11 @@ class ReviewItemVC: UIViewController,
     var name : String?
     var item : MenuItem?
     var itemRatingsReviewsRef : DatabaseReference = Database.database().reference().child("ItemRatingReviews")
+    // Firebase Storage
+    let imageStorageRef = Storage.storage().reference()
     var rating : String = ""
     var newCount : Int = 0
+    var uniqueReviewID : String?
 
     @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var venueNameLabel: UILabel!
@@ -115,12 +118,31 @@ class ReviewItemVC: UIViewController,
                     // Set new user review
                     if let userID = userID{
                         let newUserReviewRef = itemRef.child("userIDsReviews").child(userID).childByAutoId()
+                        print("UNIQUE KEY")
+                        print(newUserReviewRef.key)
+                        self.uniqueReviewID = newUserReviewRef.key
                         // Set the user review date
                         newUserReviewRef.child("date").setValue(self.getDate())
                         // Set the user review
                         newUserReviewRef.child("review").setValue(self.reviewTF.text)
                         // Set the user review rating
                         newUserReviewRef.child("rating").setValue(usersRating)
+                        
+                        let imageRef = self.imageStorageRef.child("image").child(itemID).child(userID).child(self.uniqueReviewID!)
+                        print("-----------------------------------------------------------------")
+                        print(self.uniqueReviewID!)
+                        self.uploadImage(self.addImage.image!, at: imageRef, completion: { (downloadURL) in
+                            guard let downloadURL = downloadURL else {
+                                return
+                            }
+                            
+                            let urlString = downloadURL.absoluteString
+                            print("image url: \(urlString)")
+                            
+                            // Store imageURLString to the review
+                            // Set the user image url
+                            itemRef.child("userIDsReviews").child(userID).child(self.uniqueReviewID!).child("imageURL").setValue(urlString)
+                        })
                     }
                     self.performSegue(withIdentifier: "unwindToItemDetails", sender: nil)
                 }else{
@@ -134,17 +156,56 @@ class ReviewItemVC: UIViewController,
                     // Check if userID lead to an actual value
                     if let userID = userID{
                         let newUserReviewRef = itemRef.child("userIDsReviews").child(userID).childByAutoId()
+                        print("UNIQUE KEY")
+                        print(newUserReviewRef.key)
+                        self.uniqueReviewID = newUserReviewRef.key
                         // Set the user review date
                         newUserReviewRef.child("date").setValue(self.getDate())
                         // Set the user review
                         newUserReviewRef.child("review").setValue(self.reviewTF.text)
                         // Set the user review rating
                         newUserReviewRef.child("rating").setValue(usersRating)
+                        
+                        let imageRef = self.imageStorageRef.child("image").child(itemID).child(userID).child(self.uniqueReviewID!)
+                        print("-----------------------------------------------------------------")
+                        print(self.uniqueReviewID!)
+                        self.uploadImage(self.addImage.image!, at: imageRef, completion: { (downloadURL) in
+                            guard let downloadURL = downloadURL else {
+                                return
+                            }
+                            
+                            let urlString = downloadURL.absoluteString
+                            print("image url: \(urlString)")
+                            
+                            // Store imageURLString to the review
+                            // Set the user image url
+                            itemRef.child("userIDsReviews").child(userID).child(self.uniqueReviewID!).child("imageURL").setValue(urlString)
+                        })
                     }
                     self.performSegue(withIdentifier: "unwindToItemDetails", sender: true)
                 }
             })
         }
+    }
+    
+    // Upload image to Firebase Storage
+    func uploadImage(_ image: UIImage, at reference: StorageReference, completion: @escaping (URL?) -> Void) {
+        // 1
+        guard let imageData = UIImageJPEGRepresentation(image, 0.1) else {
+            return completion(nil)
+        }
+        
+        // 2
+        reference.putData(imageData, metadata: nil, completion: { (metadata, error) in
+            // 3
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return completion(nil)
+            }
+            
+            // 4
+            completion(metadata?.downloadURL())
+        })
     }
     
     // Get date function

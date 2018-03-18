@@ -11,6 +11,7 @@ target 'YumQuest' do
     pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
+    pod 'Firebase/Storage'
     
   target 'YumQuestTests' do
     inherit! :search_paths
