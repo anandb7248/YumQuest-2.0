@@ -46,6 +46,7 @@
 		15F2DB75205DD5CA00CF538A /* emptyStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 15F2DB73205DD5CA00CF538A /* emptyStar.png */; };
 		15F2DB76205DD5CA00CF538A /* filledStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 15F2DB74205DD5CA00CF538A /* filledStar.png */; };
 		15F2DB79205DD6A100CF538A /* highlightedStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 15F2DB78205DD6A100CF538A /* highlightedStar.png */; };
+		15F2DB7B205E184600CF538A /* defaultPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 15F2DB7A205E184500CF538A /* defaultPhoto.png */; };
 		70FB0BD1BB3687A9E5981FFE /* Pods_YumQuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823E42B7CF605E5255DA819 /* Pods_YumQuestTests.framework */; };
 		9CDCFA25FAC8493A52E451BA /* Pods_YumQuest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F14FBE178FDA4EB576A44C /* Pods_YumQuest.framework */; };
 		FB266FB077685EC9B9003E85 /* Pods_YumQuestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF134FD1EFCAF23BB7290E7F /* Pods_YumQuestUITests.framework */; };
@@ -116,6 +117,7 @@
 		15F2DB73205DD5CA00CF538A /* emptyStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyStar.png; sourceTree = "<group>"; };
 		15F2DB74205DD5CA00CF538A /* filledStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledStar.png; sourceTree = "<group>"; };
 		15F2DB78205DD6A100CF538A /* highlightedStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightedStar.png; sourceTree = "<group>"; };
+		15F2DB7A205E184500CF538A /* defaultPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultPhoto.png; sourceTree = "<group>"; };
 		18A746275A2DC86F63972B20 /* Pods-YumQuest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuest.release.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuest/Pods-YumQuest.release.xcconfig"; sourceTree = "<group>"; };
 		847A42A207877D82A0A568A3 /* Pods-YumQuestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YumQuestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YumQuestUITests/Pods-YumQuestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		86F14FBE178FDA4EB576A44C /* Pods_YumQuest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YumQuest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 		157179D71FE211E800C5A167 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				15F2DB7A205E184500CF538A /* defaultPhoto.png */,
 				15F2DB78205DD6A100CF538A /* highlightedStar.png */,
 				15F2DB73205DD5CA00CF538A /* emptyStar.png */,
 				15F2DB74205DD5CA00CF538A /* filledStar.png */,
@@ -447,6 +450,7 @@
 				15F1DDB01FE25EB700DFE026 /* GoogleService-Info.plist in Resources */,
 				157179DB1FE2135C00C5A167 /* logo.png in Resources */,
 				15F2DB76205DD5CA00CF538A /* filledStar.png in Resources */,
+				15F2DB7B205E184600CF538A /* defaultPhoto.png in Resources */,
 				15F2DB75205DD5CA00CF538A /* emptyStar.png in Resources */,
 				15F2DB79205DD6A100CF538A /* highlightedStar.png in Resources */,
 				15A071451FE2097E003DE1E0 /* LaunchScreen.storyboard in Resources */,

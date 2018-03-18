@@ -9,14 +9,14 @@
 import UIKit
 import Firebase
 
-class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
+class ReviewItemVC: UIViewController,
                     UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var name : String?
     var item : MenuItem?
-    // Firebase reference
-    var itemRatingsRef : DatabaseReference = Database.database().reference().child("ItemRatings")
-    var itemReviewsRef : DatabaseReference = Database.database().reference().child("ItemReviews")
+    var itemRatingsReviewsRef : DatabaseReference = Database.database().reference().child("ItemRatingReviews")
+    var rating : String = ""
+    var newCount : Int = 0
 
     @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var venueNameLabel: UILabel!
@@ -24,15 +24,8 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var reviewTF: UITextField!
     @IBOutlet weak var addImage: UIImageView!
     
-    
-    let ratingOptions = ["1", "2", "3", "4", "5", "6","7","8","9","10"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Print item id
-        print("ITEM ID:")
-        print(item?.entryId!)
         
         if let name = name{
             venueNameLabel.text = name
@@ -49,10 +42,8 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    // Image
+    // Image - Photo Library
     @IBAction func uploadPicturePressed(_ sender: Any) {
-        print("PRESSED")
-        
         let image = UIImagePickerController()
         image.delegate = self
         image.sourceType = .photoLibrary
@@ -60,7 +51,6 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         
         self.present(image, animated: true, completion: nil)
     }
-    //https://www.youtube.com/watch?v=v8r_wD_P3B8
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
@@ -72,87 +62,120 @@ class ReviewItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         self.dismiss(animated: true, completion: nil)
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return ratingOptions[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Avenir Black", size: 16.0)
-            pickerLabel?.textAlignment = .center
-        }
-        pickerLabel?.text = ratingOptions[row]
-        pickerLabel?.textColor = UIColor.white
-        
-        return pickerLabel!
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return ratingOptions.count
-    }
-    
     // Hide keyboard when return is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         reviewTF.resignFirstResponder()
         return true
     }
 
-    
     @IBAction func submitReview(_ sender: Any) {
-        //let usersRating = Double(ratingPicker.selectedRow(inComponent: 0)) + 1.0
+        // Get the current chosen star rating (1 - 5 scale)
         let usersRating = Double(starRatingControl.rating)
-        
-        print("----------SubmitReviewPressed------------")
-        print(usersRating)
-        print(reviewTF.text!)
         
         // Write the review to the database
         //itemReviewsRef.child((item?.entryId)!).setValue(reviewTF.text)
         // Get the current authorized user's id
         let userID = Auth.auth().currentUser?.uid
         print(userID!)
-        // Append the user review to Firebase
-        itemReviewsRef.child((item?.entryId)!).child(userID!).setValue(reviewTF.text)
         
-        itemRatingsRef.child((item?.entryId)!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as! [String : AnyObject]
+        // Get the itemId
+        if let itemID = item?.entryId{
+            print("----------SubmitReviewPressed------------")
+            //print(usersRating)
+            //print(reviewTF.text!)
+            // Get reference to the item
+            let itemRef = self.itemRatingsReviewsRef.child(itemID)
             
-            let curRating = value["Rating"] as! Double
-            let curNumberOfRatings = value["NumberOfRatings"] as! Int
-            let curTotalRatings = value["TotalRatings"] as! Int
-            
-            if curRating == 0.0{
-                self.itemRatingsRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : 1, "TotalRatings": Int(usersRating), "Rating":usersRating])
-                self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
-                print("HERE")
-            }else{
-                let newNumberOfRatings = curNumberOfRatings + 1
-                let newTotalRatings = Double(curTotalRatings) + usersRating
-                let newRating = newTotalRatings / Double(newNumberOfRatings)
-                self.itemRatingsRef.child((self.item?.entryId)!).setValue(["NumberOfRatings" : newNumberOfRatings, "TotalRatings": newTotalRatings, "Rating": newRating])
-                print("HERE")
-                self.performSegue(withIdentifier: "unwindToItemDetails", sender: usersRating)
-            }
-        })
+            // Check if the item currently exists
+            itemRatingsReviewsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                // If data associated with the item already exists
+                if snapshot.hasChild(itemID){
+                    var newTotal = 0.0
+                    var newCount = 0
+                    var newAverage = 0.0
+                    
+                    // Increment previous count
+                    itemRef.child("count").observeSingleEvent(of: .value, with: { snapshot in
+                        let value = snapshot.value as! Int
+                        newCount = value + 1
+                        itemRef.child("count").setValue(newCount)
+                    })
+                    // Set new total
+                    itemRef.child("totalRatings").observeSingleEvent(of: .value, with: { snapshot in
+                        let value = snapshot.value as! Double
+                        newTotal = value + usersRating
+                        itemRef.child("totalRatings").setValue(newTotal)
+                    })
+                    // Set new average
+                    itemRef.child("averageRating").observeSingleEvent(of: .value, with: { snapshot in
+                        //let value = snapshot.value as! Double
+                        newAverage = newTotal/Double(newCount)
+                        itemRef.child("averageRating").setValue(newAverage)
+                    })
+                    // Set new user review
+                    if let userID = userID{
+                        let newUserReviewRef = itemRef.child("userIDsReviews").child(userID).childByAutoId()
+                        // Set the user review date
+                        newUserReviewRef.child("date").setValue(self.getDate())
+                        // Set the user review
+                        newUserReviewRef.child("review").setValue(self.reviewTF.text)
+                        // Set the user review rating
+                        newUserReviewRef.child("rating").setValue(usersRating)
+                    }
+                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: nil)
+                }else{
+                    // Set the count
+                    itemRef.child("count").setValue(1)
+                    // Set the total
+                    itemRef.child("totalRatings").setValue(Int(usersRating))
+                    // Set the average rating
+                    itemRef.child("averageRating").setValue(usersRating)
+                    // Set information regarding user's review
+                    // Check if userID lead to an actual value
+                    if let userID = userID{
+                        let newUserReviewRef = itemRef.child("userIDsReviews").child(userID).childByAutoId()
+                        // Set the user review date
+                        newUserReviewRef.child("date").setValue(self.getDate())
+                        // Set the user review
+                        newUserReviewRef.child("review").setValue(self.reviewTF.text)
+                        // Set the user review rating
+                        newUserReviewRef.child("rating").setValue(usersRating)
+                    }
+                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: true)
+                }
+            })
+        }
+    }
+    
+    // Get date function
+    func getDate() -> String{
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd.yyyy"
+        let result = formatter.string(from: date)
+        
+        return result
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if sender != nil {
+        if let send = sender{
+            let firstReview = send as! Bool
+            
+            if firstReview{
+                let dest = segue.destination as! ItemDetailsVC
+                dest.ratingLabel.text = String(starRatingControl.rating)
+                dest.numberOfReviewsLabel.text = "1 Review"
+                dest.firstReview = true
+                dest.reloadViewDidLoad()
+            }
+        }else{
             let dest = segue.destination as! ItemDetailsVC
-            //dest.updateRatingLabel(rating: sender as! Double)
+            dest.firstReview = false
             dest.reloadViewDidLoad()
         }
-        
     }
 }
 

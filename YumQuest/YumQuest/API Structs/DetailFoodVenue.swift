@@ -96,8 +96,6 @@ class DetailFoodVenue{
                                 }
                             }
                             
-                            // In here I can use the lat and lon information to write to GeoFire
-                            
                             
                             DispatchQueue.main.sync {
                                 self.getDetailsOfVenueResponse = venueDetailResponse
@@ -136,9 +134,9 @@ class DetailFoodVenue{
                             //print(self.getDetailsOfVenueResponse?.response.venue.name ?? "N/A")
                             //print(foursquareGetMenuURL)
                             
+                            /*
                             // For testing purposes
                             //ITERATE THROUGH EVERY ITEM
-                            
                             if let itemArrOne = menuResponse.response.menu?.menus?.items{
                                 for item in itemArrOne {
                                     if let itemArrTwo = item.entries?.items{
@@ -146,12 +144,14 @@ class DetailFoodVenue{
                                             if let itemArrThree = item.entries.items{
                                                 for item in itemArrThree {
                                                     if let id = item.entryId{
+                                                        /*
                                                         self.menuItemsRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
                                                             if !snapshot.hasChild(id){
                                                                                                                 self.menuItemsRef.child(id).setValue(["NumberOfRatings" : 0, "TotalRatings": 0, "Rating":0.0])
                                                             }
                                                         })
+                                                        */
                                                         /*
                                                          ref.child("rooms").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                                                          
@@ -168,18 +168,21 @@ class DetailFoodVenue{
                                                          })
                                                         */
                                                     }
+                                                    /*
                                                     if let name = item.name{
                                                         print(name)
                                                     }
                                                     if let price = item.price{
                                                         print(price)
                                                     }
+                                                    */
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
+                            */
                             
                             if let count = menuResponse.response.menu?.menus?.count{
                                 if count > 0 {

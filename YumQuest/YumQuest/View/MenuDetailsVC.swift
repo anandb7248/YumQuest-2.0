@@ -21,7 +21,7 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     var sections = [MenuTableSection]()
     
-    var menuItemsRef: DatabaseReference  = Database.database().reference().child("ItemRatings")
+    var itemRatingsReviewsRef: DatabaseReference  = Database.database().reference().child("ItemRatingReviews")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,18 +42,20 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         for menuCategory in (restaurantDetails?.menu?.response.menu?.menus?.items)!{
-            print("------------Category------------")
-            print(menuCategory.name  ?? "Empty Category Name")
+            //print("------------Category------------")
+            //print(menuCategory.name  ?? "Empty Category Name")
             for menuSection in (menuCategory.entries?.items)!{
-                print("------------Section------------")
-                print(menuSection.name  ?? "Empty Section Name")
+                //print("------------Section------------")
+                //print(menuSection.name  ?? "Empty Section Name")
                 sections.append(MenuTableSection(sectionName: menuSection.name!, menuItems: menuSection.entries.items!))
 
+                /*
                 for menuItem in menuSection.entries.items!{
                     print(menuItem.name ?? "Empty Name")
                     print(menuItem.price ?? "Empty Price")
                     print(menuItem.description ?? "Empty Description")
                 }
+                */
             }
         }
     }
@@ -87,32 +89,18 @@ class MenuDetailsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.priceLabel.text = sections[indexPath.section].menuItems[indexPath.row].price
         cell.descriptionLabel.text = sections[indexPath.section].menuItems[indexPath.row].description
         
-        //cell.ratingLabel.text =
-        let id = sections[indexPath.section].menuItems[indexPath.row].entryId
-        
-        menuItemsRef.child(id!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as! [String:AnyObject]
-            let rating = value["Rating"] as! Double
-            var ratingString = "NA"
-            
-            if rating == 10.0 {
-                ratingString  = "10"
-            }else if rating != 0.0{
-                ratingString = String(format:"%.1f",rating)
-            }
-            
-            print("--------------------------")
-            print(ratingString)
-            
-            DispatchQueue.main.async {
-                cell.ratingLabel.text = ratingString
-            }
-        })
-        
-        // Fill the menu item rating here
-        // Use the entryId to read from Firebase
-        //sections[indexPath.section].menuItems[indexPath.row].entryId
-        
+        if let itemID = sections[indexPath.section].menuItems[indexPath.row].entryId{
+            itemRatingsReviewsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChild(itemID){
+                    //let avgRating = snapshot
+                    //cell.ratingLabel.text = "NA"
+                    self.itemRatingsReviewsRef.child(itemID).child("averageRating").observeSingleEvent(of: .value, with: { snapshot in
+                        let rating = snapshot.value as! Double
+                        cell.ratingLabel.text = String(format:"%.1f",rating)
+                    })
+                }
+            })
+        }
         return cell
     }
     
