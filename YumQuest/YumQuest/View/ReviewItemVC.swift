@@ -20,6 +20,8 @@ class ReviewItemVC: UIViewController,
     var rating : String = ""
     var newCount : Int = 0
     var uniqueReviewID : String?
+    var urlString : String?
+    var firstReview: Bool = false
 
     @IBOutlet weak var starRatingControl: RatingControl!
     @IBOutlet weak var venueNameLabel: UILabel!
@@ -144,7 +146,8 @@ class ReviewItemVC: UIViewController,
                             itemRef.child("userIDsReviews").child(userID).child(self.uniqueReviewID!).child("imageURL").setValue(urlString)
                         })
                     }
-                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: nil)
+                    self.firstReview = false
+                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: self.addImage.image)
                 }else{
                     // Set the count
                     itemRef.child("count").setValue(1)
@@ -169,20 +172,24 @@ class ReviewItemVC: UIViewController,
                         let imageRef = self.imageStorageRef.child("image").child(itemID).child(userID).child(self.uniqueReviewID!)
                         print("-----------------------------------------------------------------")
                         print(self.uniqueReviewID!)
-                        self.uploadImage(self.addImage.image!, at: imageRef, completion: { (downloadURL) in
-                            guard let downloadURL = downloadURL else {
-                                return
-                            }
-                            
-                            let urlString = downloadURL.absoluteString
-                            print("image url: \(urlString)")
-                            
-                            // Store imageURLString to the review
-                            // Set the user image url
-                            itemRef.child("userIDsReviews").child(userID).child(self.uniqueReviewID!).child("imageURL").setValue(urlString)
-                        })
+                        
+                            self.uploadImage(self.addImage.image!, at: imageRef, completion: { (downloadURL) in
+                                guard let downloadURL = downloadURL else {
+                                    return
+                                }
+                                
+                                self.urlString = downloadURL.absoluteString
+                                print("image url: \(self.urlString)")
+                                
+                                //self.addImage.image
+                                
+                                // Store imageURLString to the review
+                                // Set the user image url
+                                itemRef.child("userIDsReviews").child(userID).child(self.uniqueReviewID!).child("imageURL").setValue(self.urlString)
+                            })
                     }
-                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: true)
+                    self.firstReview = true
+                    self.performSegue(withIdentifier: "unwindToItemDetails", sender: self.addImage.image)
                 }
             })
         }
@@ -222,19 +229,19 @@ class ReviewItemVC: UIViewController,
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let send = sender{
-            let firstReview = send as! Bool
-            
-            if firstReview{
-                let dest = segue.destination as! ItemDetailsVC
-                dest.ratingLabel.text = String(starRatingControl.rating)
-                dest.numberOfReviewsLabel.text = "1 Review"
-                dest.firstReview = true
-                dest.reloadViewDidLoad()
-            }
+        if firstReview{
+            let dest = segue.destination as! ItemDetailsVC
+            dest.ratingLabel.text = String(starRatingControl.rating)
+            dest.numberOfReviewsLabel.text = "1 Review"
+            dest.firstReview = true
+            let image = sender as! UIImage
+            dest.appendImage(img: image)
+            dest.reloadViewDidLoad()
         }else{
             let dest = segue.destination as! ItemDetailsVC
             dest.firstReview = false
+            let image = sender as! UIImage
+            dest.appendImage(img: image)
             dest.reloadViewDidLoad()
         }
     }
