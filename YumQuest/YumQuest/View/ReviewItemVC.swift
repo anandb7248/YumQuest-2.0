@@ -39,6 +39,8 @@ class ReviewItemVC: UIViewController,
             itemNameLabel.text = item.name
         }
         
+        reviewTF.sizeToFit()
+        
         self.hideKeyboardWhenTappedAround()
     }
 

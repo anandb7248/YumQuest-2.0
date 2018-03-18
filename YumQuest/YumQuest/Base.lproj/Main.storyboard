@@ -1433,27 +1433,57 @@
                                                     <constraint firstAttribute="height" constant="395" id="51h-Rn-nxz"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" id="93H-Xz-wv8" customClass="ReviewTVC" customModule="YumQuest" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="98" id="93H-Xz-wv8" customClass="ReviewTVC" customModule="YumQuest" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="359" height="98"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="93H-Xz-wv8" id="rh7-OA-RYw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="97.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLh-tB-RZJ">
-                                                                    <rect key="frame" x="15" y="11" width="313" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLh-tB-RZJ">
+                                                                    <rect key="frame" x="15" y="38" width="329" height="49"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM/dd/YYYY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyr-oH-1UB">
+                                                                    <rect key="frame" x="15" y="11" width="78" height="21"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="78" id="yeX-kU-X0T"/>
+                                                                        <constraint firstAttribute="height" constant="21" id="z0B-FH-tRS"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diZ-iR-buZ">
+                                                                    <rect key="frame" x="327" y="11" width="20" height="20"/>
+                                                                    <color key="backgroundColor" red="1" green="0.71655168270000003" blue="0.28290516650000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="7z2-qZ-Kpy"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="W8g-9F-abA"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="lY0-VC-enR"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="mLh-tB-RZJ" firstAttribute="leading" secondItem="rh7-OA-RYw" secondAttribute="leadingMargin" constant="-1" id="3Mv-6f-ObF"/>
-                                                                <constraint firstItem="mLh-tB-RZJ" firstAttribute="centerY" secondItem="rh7-OA-RYw" secondAttribute="centerY" id="50Z-QB-Lxf"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="mLh-tB-RZJ" secondAttribute="trailing" constant="15" id="gWd-8A-x9E"/>
+                                                                <constraint firstItem="Yyr-oH-1UB" firstAttribute="top" secondItem="rh7-OA-RYw" secondAttribute="top" constant="11" id="3kg-zs-1Mx"/>
+                                                                <constraint firstAttribute="trailing" secondItem="mLh-tB-RZJ" secondAttribute="trailing" constant="15" id="7uP-iO-lU2"/>
+                                                                <constraint firstItem="mLh-tB-RZJ" firstAttribute="top" secondItem="Yyr-oH-1UB" secondAttribute="bottom" constant="6" id="DXr-Ct-EYC"/>
+                                                                <constraint firstItem="mLh-tB-RZJ" firstAttribute="leading" secondItem="rh7-OA-RYw" secondAttribute="leading" constant="15" id="Lcs-GA-SQM"/>
+                                                                <constraint firstAttribute="bottom" secondItem="mLh-tB-RZJ" secondAttribute="bottom" constant="10.5" id="NhN-Fo-2Kp"/>
+                                                                <constraint firstItem="Yyr-oH-1UB" firstAttribute="leading" secondItem="rh7-OA-RYw" secondAttribute="leading" constant="15" id="PHh-nP-s5v"/>
+                                                                <constraint firstItem="diZ-iR-buZ" firstAttribute="top" secondItem="rh7-OA-RYw" secondAttribute="top" constant="11" id="Z2F-MY-Adz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="diZ-iR-buZ" secondAttribute="trailing" constant="12" id="eXL-xf-gox"/>
+                                                                <constraint firstItem="diZ-iR-buZ" firstAttribute="leading" secondItem="rh7-OA-RYw" secondAttribute="leading" constant="327" id="hAT-Io-2Dc"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="dateLabel" destination="Yyr-oH-1UB" id="sd0-WW-TOm"/>
+                                                            <outlet property="ratingLabel" destination="diZ-iR-buZ" id="gqT-Lm-Cr1"/>
                                                             <outlet property="reviewLabel" destination="mLh-tB-RZJ" id="a4P-zH-G2u"/>
                                                         </connections>
                                                     </tableViewCell>

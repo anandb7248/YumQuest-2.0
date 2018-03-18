@@ -15,6 +15,7 @@ class ItemDetailsVC: UIViewController,UITableViewDataSource, UITableViewDelegate
     var menuItem : MenuItem?
     var dates : [String] = [String]()
     var reviews : [String] = [String]()
+    var ratings : [String] = [String]()
     var imageURLs : [String] = [String]()
     var firstReview = false
     
@@ -105,10 +106,13 @@ class ItemDetailsVC: UIViewController,UITableViewDataSource, UITableViewDelegate
                                 let reviewDict = singleReview.value as! [String : AnyObject]
                                 let review = reviewDict["review"] as! String
                                 let date = reviewDict["date"] as! String
+                                let rating = reviewDict["rating"] as! Int
                                 //let imageURL = reviewDict["imageURL"] as! String
                                 
                                 self.reviews.append(review)
                                 self.dates.append(date)
+                                self.ratings.append(String(rating))
+                                
                                 //self.imageURLs.append(imageURL)
                             }
                         }
@@ -213,7 +217,10 @@ class ItemDetailsVC: UIViewController,UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell") as! ReviewTVC
         
+        cell.dateLabel.text = dates[indexPath.row]
         cell.reviewLabel.text = reviews[indexPath.row]
+        cell.reviewLabel.sizeToFit()
+        cell.ratingLabel.text = ratings[indexPath.row]
         
         return cell
     }
